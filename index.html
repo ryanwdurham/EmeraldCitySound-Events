@@ -673,6 +673,18 @@ nav {
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
 }
+
+@media (max-width: 1024px) {
+  .what-we-do-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .what-we-do-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .what-we-do-grid { grid-template-columns: 1fr; }
+}
 .wwd-item {
   border-top: 1px solid var(--border);
   padding-top: 1.5rem;
@@ -2033,6 +2045,13 @@ footer {
 }
 .svc-timeline-desc { font-size: 0.82rem; color: var(--white-dim); line-height: 1.6; }
 
+@media (max-width: 768px) {
+  .home-produce-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
+  }
+}
+
 /* Navigate function aliases */
 </style>
 </head>
@@ -2176,7 +2195,7 @@ footer {
   <!-- What We Provide -->
   <section class="section" style="background:var(--bg2);">
     <div class="container">
-      <div style="display:grid; grid-template-columns: 1fr 2fr; gap: 5rem; align-items:start;">
+      <div style="display:grid; grid-template-columns: 1fr 2fr; gap: 5rem; align-items:start;" class="home-produce-grid"></div>
         <div>
           <div class="section-label">Full-Service Production</div>
           <h2 class="section-title">Sound.<br>Light.<br><em>Unforgettable.</em></h2>
