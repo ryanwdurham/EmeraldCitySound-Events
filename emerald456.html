@@ -1,0 +1,4276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emerald City Sound & Events — Seattle's Premier DJ & Event Experience</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   CSS VARIABLES & RESET
+============================================================ */
+:root {
+  --bg:       #080810;
+  --bg2:      #0d0d1a;
+  --bg3:      #111124;
+  --purple:   #7C4DFF;
+  --purple-dim: rgba(124, 77, 255, 0.15);
+  --purple-glow: rgba(124, 77, 255, 0.4);
+  --gold:     #C9A84C;
+  --gold-dim: rgba(201, 168, 76, 0.15);
+  --teal:     #00D9C8;
+  --teal-dim: rgba(0, 217, 200, 0.12);
+  --white:    #F0EEF8;
+  --white-dim: rgba(240, 238, 248, 0.6);
+  --white-faint: rgba(240, 238, 248, 0.08);
+  --border:   rgba(124, 77, 255, 0.2);
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+/* ============================================================
+   PAGE SYSTEM
+============================================================ */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ============================================================
+   HEADER / NAV
+============================================================ */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 0 2.5rem;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(8, 8, 16, 0.85);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.3s;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+.logo-mark {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+}
+.logo-text-top {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  letter-spacing: 0.12em;
+  color: var(--white);
+  line-height: 1;
+}
+.logo-text-sub {
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--teal);
+  line-height: 1;
+  margin-top: 2px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+}
+.nav-link {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--white-dim);
+  padding: 0.4rem 0.85rem;
+  border-radius: 4px;
+  transition: color 0.2s, background 0.2s;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.nav-link:hover { color: var(--white); background: var(--white-faint); }
+.nav-link.active { color: var(--purple); }
+.nav-cta {
+  margin-left: 0.75rem;
+  padding: 0.45rem 1.25rem;
+  background: var(--purple);
+  color: #fff;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.nav-cta:hover {
+  background: #6a3de8;
+  box-shadow: 0 0 20px var(--purple-glow);
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 6px;
+  cursor: pointer;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--white);
+  transition: all 0.3s;
+}
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 72px; left: 0; right: 0; bottom: 0;
+  background: rgba(8,8,16,0.97);
+  z-index: 999;
+  padding: 2rem;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow-y: auto;
+}
+.mobile-menu.open { display: flex; }
+.mobile-nav-link {
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white-dim);
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.mobile-nav-link:hover, .mobile-nav-link.active { color: var(--purple); }
+.mobile-cta {
+  margin-top: 1.5rem;
+  padding: 1rem 2rem;
+  background: var(--purple);
+  color: #fff;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* ============================================================
+   SHARED SECTION STYLES
+============================================================ */
+.section { padding: 6rem 0; }
+.section-sm { padding: 4rem 0; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.container-wide { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
+
+.section-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 1rem;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  letter-spacing: 0.05em;
+  color: var(--white);
+  line-height: 1.0;
+  margin-bottom: 1.25rem;
+}
+.section-title em {
+  font-style: italic;
+  font-family: var(--font-serif);
+  color: var(--purple);
+}
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--white-dim);
+  max-width: 600px;
+  line-height: 1.75;
+}
+.section-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--purple), transparent);
+  margin: 1.5rem 0;
+}
+.text-center { text-align: center; }
+.text-center .section-subtitle { margin: 0 auto; }
+.text-center .section-divider { margin: 1.5rem auto; }
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 2rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-radius: 3px;
+  transition: all 0.25s;
+  cursor: pointer;
+}
+.btn-primary {
+  background: var(--purple);
+  color: #fff;
+  border: 1px solid var(--purple);
+}
+.btn-primary:hover {
+  background: #6a3de8;
+  box-shadow: 0 0 30px var(--purple-glow);
+  transform: translateY(-1px);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid rgba(240,238,248,0.3);
+}
+.btn-outline:hover {
+  border-color: var(--purple);
+  color: var(--purple);
+  transform: translateY(-1px);
+}
+.btn-gold {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+}
+.btn-gold:hover {
+  background: var(--gold-dim);
+  box-shadow: 0 0 20px rgba(201,168,76,0.3);
+}
+
+/* Cards */
+.card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 2.5rem;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.card:hover {
+  border-color: var(--purple);
+  transform: translateY(-4px);
+}
+
+/* Horizontal rule */
+.rule {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0;
+}
+
+/* Stat badge */
+.stat-row {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+.stat-item { }
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  letter-spacing: 0.04em;
+  color: var(--purple);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--white-dim);
+  margin-top: 0.25rem;
+}
+
+/* Glow line */
+.glow-line {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--purple-glow), transparent);
+}
+
+/* ============================================================
+   HOME PAGE
+============================================================ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 8rem;
+  overflow: hidden;
+  padding-top: 72px
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=1800&auto=format&fit=crop&q=85');
+  background-size: cover;
+  background-position: center 30%;
+  filter: brightness(0.50) saturate(1.2);
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    var(--bg) 0%,
+    rgba(8,8,16,0.6) 40%,
+    rgba(8,8,16,0.15) 100%
+  );
+}
+.hero-overlay-left {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(8,8,16,0.7) 0%,
+    transparent 60%
+  );
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+  padding-top: 2rem
+}
+.hero-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--teal);
+}
+.hero-headline {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 9vw, 8rem);
+  letter-spacing: 0.04em;
+  line-height: 0.92;
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+.hero-headline .accent {
+  color: var(--purple);
+}
+.hero-headline .serif-line {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(2.8rem, 7vw, 6.5rem);
+  color: var(--gold);
+}
+.hero-sub {
+  font-size: 1.15rem;
+  color: var(--white-dim);
+  max-width: 520px;
+  line-height: 1.75;
+  margin-bottom: 2.5rem;
+}
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 3.5rem;
+}
+.hero-stats {
+  display: flex;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(124,77,255,0.25);
+  justify-content: center;
+}
+.hero-stat-num {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  letter-spacing: 0.05em;
+  color: var(--white);
+  line-height: 1;
+}
+.hero-stat-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--white-dim);
+  margin-top: 0.25rem;
+}
+
+/* scroll cue */
+.scroll-cue {
+  position: absolute;
+  bottom: 2rem;
+  right: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 2;
+  opacity: 0.5;
+}
+.scroll-cue span {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  color: var(--white-dim);
+}
+.scroll-line {
+  width: 1px;
+  height: 50px;
+  background: linear-gradient(180deg, var(--purple), transparent);
+  animation: scrollDown 2s infinite;
+}
+@keyframes scrollDown {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  50.01% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+/* Home – services overview */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.service-tile {
+  background: var(--bg2);
+  padding: 2.5rem 2rem;
+  transition: background 0.3s;
+  cursor: pointer;
+}
+.service-tile:hover { background: var(--bg3); }
+.service-tile-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 0.75rem;
+}
+.service-tile-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  letter-spacing: 0.08em;
+  color: var(--white);
+  margin-bottom: 0.75rem;
+}
+.service-tile-desc {
+  font-size: 0.88rem;
+  color: var(--white-dim);
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+.service-tile-link {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--purple);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: gap 0.2s;
+}
+.service-tile:hover .service-tile-link { gap: 0.85rem; }
+
+/* Home – process steps */
+.process-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+}
+.process-list::before {
+  content: '';
+  position: absolute;
+  top: 1.5rem;
+  left: 12.5%;
+  right: 12.5%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--purple-glow), transparent);
+}
+.process-step {
+  padding: 0 1.5rem;
+  text-align: center;
+}
+.process-num {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 1px solid var(--purple);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  color: var(--purple);
+  background: var(--bg);
+  position: relative;
+  z-index: 1;
+}
+.process-step-title {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+.process-step-desc {
+  font-size: 0.85rem;
+  color: var(--white-dim);
+  line-height: 1.65;
+}
+
+/* Home – testimonial strip */
+.testimonials-strip {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 5rem 0;
+}
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.testimonial-card {
+  padding: 2rem;
+  border-left: 2px solid var(--purple);
+}
+.testimonial-text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--white);
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+.testimonial-stars {
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+.testimonial-author {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white-dim);
+}
+.testimonial-event {
+  font-size: 0.72rem;
+  color: var(--teal);
+  letter-spacing: 0.1em;
+  margin-top: 0.2rem;
+}
+
+/* Home – before/after */
+.impact-section {
+  background: var(--bg);
+}
+.before-after {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.ba-panel {
+  position: relative;
+  height: 420px;
+  overflow: hidden;
+}
+.ba-panel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s;
+}
+.ba-panel:hover img { transform: scale(1.04); }
+.ba-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(8,8,16,0.9));
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2rem;
+}
+.ba-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.ba-before .ba-label { color: rgba(240,238,248,0.4); }
+.ba-after .ba-label { color: var(--teal); }
+.ba-title {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  letter-spacing: 0.06em;
+}
+.ba-before .ba-title { color: rgba(240,238,248,0.5); }
+.ba-after .ba-title { color: var(--white); }
+
+/* Home – services list (what we do) */
+.what-we-do-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.home-produce-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .home-produce-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .what-we-do-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 480px) {
+  .home-produce-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .what-we-do-grid { grid-template-columns: 1fr 1fr; }
+}
+.wwd-item {
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+}
+.wwd-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+.wwd-desc {
+  font-size: 0.85rem;
+  color: var(--white-dim);
+  line-height: 1.65;
+}
+
+/* ============================================================
+   SERVICES PAGE
+============================================================ */
+.services-hero {
+  padding: 10rem 0 5rem;
+  background: var(--bg);
+}
+.services-intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+.services-intro-img {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+}
+.services-intro-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.services-intro-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+.event-type-section {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border);
+}
+.event-type-section:nth-child(even) { background: var(--bg2); }
+
+.event-section-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+.event-section-layout.reverse { direction: rtl; }
+.event-section-layout.reverse > * { direction: ltr; }
+
+@media (max-width: 1024px) {
+  .event-section-layout.reverse {
+    direction: ltr;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.event-tag {
+  display: inline-block;
+  padding: 0.3rem 0.85rem;
+  border: 1px solid;
+  border-radius: 2px;
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.event-tag.wedding { border-color: var(--gold); color: var(--gold); }
+.event-tag.corporate { border-color: #6fa8dc; color: #6fa8dc; }
+.event-tag.special { border-color: var(--teal); color: var(--teal); }
+
+.included-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem 1.5rem;
+  margin: 1.5rem 0;
+}
+.included-item {
+  font-size: 0.85rem;
+  color: var(--white-dim);
+  padding-left: 1.1rem;
+  position: relative;
+}
+.included-item::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--purple);
+}
+
+.package-tiers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-top: 2rem;
+}
+.package-tier {
+  background: var(--bg2);
+  padding: 2rem 1.5rem;
+  position: relative;
+}
+.package-tier.featured {
+  background: var(--bg3);
+}
+.package-tier.featured::before {
+  content: 'Most Popular';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--purple);
+  background: var(--bg);
+  padding: 0.2rem 0.75rem;
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+}
+.tier-name {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  color: var(--white);
+  margin-bottom: 0.35rem;
+  margin-top: 0.75rem;
+}
+.tier-price {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--purple);
+  margin-bottom: 0.25rem;
+}
+.tier-price-note {
+  font-size: 0.72rem;
+  color: var(--white-dim);
+  margin-bottom: 1.25rem;
+}
+.tier-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.tier-features li {
+  font-size: 0.83rem;
+  color: var(--white-dim);
+  padding-left: 1rem;
+  position: relative;
+}
+.tier-features li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--purple);
+}
+
+/* Event image cards */
+.event-img-card {
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 16/10;
+}
+.event-img-card img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+.event-img-card:hover img { transform: scale(1.04); }
+.event-img-tag {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  background: rgba(8,8,16,0.8);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+  padding: 0.4rem 0.85rem;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--white-dim);
+}
+
+/* ============================================================
+   GALLERY PAGE
+============================================================ */
+.gallery-hero {
+  padding: 10rem 0 4rem;
+}
+.gallery-filters {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+.filter-btn {
+  padding: 0.5rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--white-dim);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.filter-btn:hover, .filter-btn.active {
+  border-color: var(--purple);
+  color: var(--purple);
+  background: var(--purple-dim);
+}
+.gallery-masonry {
+  columns: 3;
+  column-gap: 1rem;
+}
+.gallery-item {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+.gallery-item img {
+  width: 100%;
+  display: block;
+  transition: transform 0.4s;
+}
+.gallery-item:hover img { transform: scale(1.05); }
+.gallery-item-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(8,8,16,0.65);
+  display: flex;
+  align-items: flex-end;
+  padding: 1.25rem;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.gallery-item:hover .gallery-item-overlay { opacity: 1; }
+.gallery-item-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+
+/* ============================================================
+   PLAYLISTS PAGE
+============================================================ */
+.playlists-hero {
+  padding: 10rem 0 4rem;
+}
+.playlist-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 3rem;
+  overflow-x: auto;
+}
+.playlist-tab {
+  padding: 0.85rem 1.75rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--white-dim);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.playlist-tab:hover { color: var(--white); }
+.playlist-tab.active {
+  color: var(--purple);
+  border-bottom-color: var(--purple);
+}
+.playlist-panel { display: none; }
+.playlist-panel.active { display: block; }
+
+.playlist-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3rem;
+  align-items: start;
+  margin-bottom: 3rem;
+}
+.playlist-vibe-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+.vibe-tag {
+  padding: 0.25rem 0.75rem;
+  background: var(--purple-dim);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--purple);
+}
+.track-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.track-item {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s;
+  border-radius: 4px;
+  padding: 0.85rem 1rem;
+}
+.track-item:hover { background: var(--white-faint); }
+.track-num {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  color: var(--white-dim);
+  text-align: right;
+}
+.track-name {
+  font-size: 0.9rem;
+  color: var(--white);
+}
+.track-artist {
+  font-size: 0.8rem;
+  color: var(--white-dim);
+  margin-top: 0.1rem;
+}
+.track-duration {
+  font-size: 0.8rem;
+  font-family: monospace;
+  color: var(--white-dim);
+}
+
+/* ============================================================
+   REVIEWS PAGE
+============================================================ */
+.reviews-hero {
+  padding: 10rem 0 4rem;
+}
+.reviews-summary {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 5rem;
+  align-items: center;
+  padding: 4rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 4rem;
+}
+
+@media (max-width: 1024px) {
+  .reviews-summary {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .reviews-summary .rating-bar-row {
+    justify-content: center;
+  }
+}
+.reviews-score-big {
+  text-align: center;
+}
+.score-num {
+  font-family: var(--font-display);
+  font-size: 7rem;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: var(--white);
+}
+.score-stars {
+  font-size: 1.5rem;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+  margin: 0.5rem 0;
+}
+.score-count {
+  font-size: 0.8rem;
+  color: var(--white-dim);
+  letter-spacing: 0.1em;
+}
+.rating-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.rating-bar-row {
+  display: grid;
+  grid-template-columns: 3rem 1fr 2rem;
+  gap: 0.75rem;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--white-dim);
+}
+.rating-bar-track {
+  height: 6px;
+  background: var(--white-faint);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.rating-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--purple), var(--teal));
+  border-radius: 3px;
+}
+
+.reviews-masonry {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+.review-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+.review-stars { color: var(--gold); font-size: 0.85rem; margin-bottom: 0.75rem; }
+.review-text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--white);
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+.review-author {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--white);
+  letter-spacing: 0.05em;
+}
+.review-event {
+  font-size: 0.72rem;
+  color: var(--teal);
+  letter-spacing: 0.1em;
+  margin-top: 0.2rem;
+}
+.review-platform {
+  font-size: 0.68rem;
+  color: var(--white-dim);
+  margin-top: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   ABOUT PAGE
+============================================================ */
+.about-hero {
+  padding: 10rem 0 4rem;
+}
+.about-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 5rem;
+  align-items: start;
+}
+.about-img-stack {
+  position: relative;
+}
+.about-img-main {
+  width: 100%;
+  aspect-ratio: 3/4;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.about-img-main img { width:100%; height:100%; object-fit: cover; }
+.about-img-accent {
+  position: absolute;
+  bottom: -2rem;
+  right: -2rem;
+  width: 55%;
+  aspect-ratio: 4/3;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 3px solid var(--bg);
+  box-shadow: 0 0 40px rgba(0,0,0,0.5);
+}
+.about-img-accent img { width:100%; height:100%; object-fit: cover; }
+
+.about-quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1.5;
+  border-left: 2px solid var(--gold);
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+}
+.about-body {
+  font-size: 1.0rem;
+  color: var(--white-dim);
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+}
+.about-credentials {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--border);
+}
+.cred-item {}
+.cred-num {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  letter-spacing: 0.05em;
+  color: var(--purple);
+  line-height: 1;
+}
+.cred-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--white-dim);
+  margin-top: 0.25rem;
+}
+
+/* Why Choose Us */
+.why-us-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+.why-item {
+  padding: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  transition: border-color 0.3s;
+}
+.why-item:hover { border-color: var(--purple); }
+.why-item-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+.why-item-text {
+  font-size: 0.88rem;
+  color: var(--white-dim);
+  line-height: 1.65;
+}
+
+/* FAQ */
+.faq-list {
+  max-width: 760px;
+  margin: 3rem auto 0;
+}
+.faq-item {
+  border-bottom: 1px solid var(--border);
+}
+.faq-question {
+  width: 100%;
+  text-align: left;
+  padding: 1.5rem 0;
+  font-size: 1.0rem;
+  font-weight: 500;
+  color: var(--white);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: var(--font-body);
+}
+.faq-toggle {
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--purple);
+  font-size: 1.1rem;
+  transition: transform 0.3s;
+}
+.faq-item.open .faq-toggle { transform: rotate(45deg); }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s;
+}
+.faq-answer-inner {
+  padding-bottom: 1.5rem;
+  font-size: 0.92rem;
+  color: var(--white-dim);
+  line-height: 1.75;
+}
+
+/* ============================================================
+   CONTACT PAGE
+============================================================ */
+.contact-hero {
+  padding: 10rem 0 4rem;
+}
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 5rem;
+  align-items: start;
+}
+.contact-info {}
+.contact-info-title {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  letter-spacing: 0.06em;
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+.contact-info-text {
+  font-size: 0.95rem;
+  color: var(--white-dim);
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+}
+.contact-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+}
+.contact-detail-item {}
+.contact-detail-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 0.3rem;
+}
+.contact-detail-value {
+  font-size: 1.0rem;
+  color: var(--white);
+}
+.contact-guarantee {
+  padding: 1.5rem;
+  border: 1px solid var(--purple-dim);
+  border-radius: 6px;
+  background: var(--purple-dim);
+}
+.contact-guarantee-title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--purple);
+  margin-bottom: 0.75rem;
+}
+.contact-guarantee-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.contact-guarantee-list li {
+  font-size: 0.85rem;
+  color: var(--white-dim);
+  padding-left: 1.1rem;
+  position: relative;
+}
+.contact-guarantee-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--purple);
+  font-size: 0.75rem;
+}
+
+/* Contact form */
+.contact-form {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 3rem;
+}
+.form-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  letter-spacing: 0.08em;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+.form-subtitle {
+  font-size: 0.85rem;
+  color: var(--white-dim);
+  margin-bottom: 2.5rem;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+.form-group {
+  margin-bottom: 1.25rem;
+}
+.form-label {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--white-dim);
+  margin-bottom: 0.5rem;
+}
+.form-control {
+  width: 100%;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.85rem 1rem;
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  transition: border-color 0.2s;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.form-control:focus { border-color: var(--purple); }
+.form-control::placeholder { color: rgba(240,238,248,0.25); }
+select.form-control {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237C4DFF' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+select.form-control option { background: #1a1a2e; }
+textarea.form-control { resize: vertical; min-height: 140px; }
+.form-note {
+  font-size: 0.78rem;
+  color: var(--white-dim);
+  text-align: center;
+  margin-top: 1rem;
+  line-height: 1.6;
+}
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 3rem;
+}
+.form-success.visible { display: block; }
+.form-success-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  letter-spacing: 0.08em;
+  color: var(--teal);
+  margin-bottom: 0.75rem;
+}
+.form-success-text {
+  font-size: 0.92rem;
+  color: var(--white-dim);
+}
+
+/* ============================================================
+   FOOTER
+============================================================ */
+footer {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  padding: 5rem 0 2rem;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+.footer-brand {}
+.footer-logo-text {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  letter-spacing: 0.1em;
+  color: var(--white);
+  margin-bottom: 0.25rem;
+}
+.footer-logo-sub {
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 1.25rem;
+}
+.footer-tagline {
+  font-size: 0.88rem;
+  color: var(--white-dim);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+.footer-col-title {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 1.25rem;
+}
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: flex-start;
+}
+
+@media (max-width: 768px) {
+  .footer-links {
+    align-items: center;
+  }
+}
+.footer-links li a, .footer-links li span {
+  font-size: 0.88rem;
+  color: var(--white-dim);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.footer-links li a:hover, .footer-links li span:hover { color: var(--purple); }
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+  }
+}
+.footer-copy {
+  font-size: 0.78rem;
+  color: var(--white-dim);
+}
+.footer-copy span { color: var(--purple); }
+.footer-area {
+  font-size: 0.78rem;
+  color: var(--white-dim);
+  letter-spacing: 0.1em;
+}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width: 1024px) {
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  
+  .process-list { grid-template-columns: repeat(2, 1fr); }
+  .process-list::before { display: none; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .about-layout { grid-template-columns: 1fr; }
+  .about-img-stack { max-width: 500px; margin-bottom: 4rem; }
+  .reviews-masonry { grid-template-columns: repeat(2, 1fr); }
+  .gallery-masonry { columns: 2; }
+  .event-section-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+  .event-section-layout.reverse { direction: ltr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .contact-layout { grid-template-columns: 1fr; }
+  .services-intro-grid { grid-template-columns: 1fr; }
+  .playlist-header { grid-template-columns: 1fr; }
+  .reviews-summary { grid-template-columns: 1fr; gap: 2rem; }
+  .before-after { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  nav { display: none; }
+  .hamburger { display: flex; }
+  header { padding: 0 1.25rem; }
+
+  .hero { padding-bottom: 5rem; }
+  .hero-content { padding: 0 1.25rem; }
+  .hero-headline { font-size: clamp(2.8rem, 12vw, 4rem); }
+  .hero-stats { gap: 1.5rem; }
+  .hero-actions { flex-direction: column; }
+  .hero-actions .btn { justify-content: center; }
+
+  .section { padding: 4rem 0; }
+  .container { padding: 0 1.25rem; }
+  .container-wide { padding: 0 1.25rem; }
+  .services-grid { grid-template-columns: 1fr; }
+  
+  .package-tiers { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .contact-form { padding: 2rem 1.5rem; }
+  .reviews-masonry { grid-template-columns: 1fr; }
+  .gallery-masonry { columns: 2; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .why-us-grid { grid-template-columns: 1fr; }
+  .about-credentials { grid-template-columns: 1fr 1fr; }
+  .included-list { grid-template-columns: 1fr; }
+  .ba-panel { height: 280px; }
+  .hero-stats { justify-content: center; text-align: center; }
+.svc-nav-btns { align-items: center; }
+.svc-nav-btn { text-align: left; }
+.home-produce-grid { text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .gallery-masonry { columns: 1; }
+  
+  .hero-stats { flex-direction: column; gap: 1rem; }
+  .about-img-accent { display: none; }
+  .hero-stats { justify-content: center; text-align: center; }
+}
+/* ============================================================
+   LIGHTBOX
+============================================================ */
+.lightbox-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+.lightbox-overlay.open {
+  display: flex;
+}
+.lightbox-img-wrap {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lightbox-overlay img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 0 80px rgba(124, 77, 255, 0.3);
+}
+.lightbox-close {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.5rem;
+  font-size: 2rem;
+  color: rgba(240, 238, 248, 0.7);
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s;
+  z-index: 10000;
+  background: none;
+  border: none;
+  font-family: sans-serif;
+}
+.lightbox-close:hover { color: #fff; }
+.lightbox-caption {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(240, 238, 248, 0.5);
+  white-space: nowrap;
+}
+.lightbox-prev,
+.lightbox-next {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: rgba(240, 238, 248, 0.5);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 1rem;
+  transition: color 0.2s;
+  z-index: 10000;
+  font-family: sans-serif;
+}
+.lightbox-prev { left: 1rem; }
+.lightbox-next { right: 1rem; }
+.lightbox-prev:hover,
+.lightbox-next:hover { color: #fff; }
+
+/* Make gallery items show a zoom cursor */
+.gallery-item { cursor: zoom-in; }
+
+/* ============================================================
+   FAQ PAGE
+============================================================ */
+.faq-page-hero {
+  padding: 10rem 0 4rem;
+}
+.faq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+.faq-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+.faq-card:hover {
+  border-color: var(--purple);
+}
+.faq-card-question {
+  width: 100%;
+  text-align: left;
+  padding: 1.5rem 1.75rem;
+  font-size: 0.97rem;
+  font-weight: 500;
+  color: var(--white);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: var(--font-body);
+  line-height: 1.4;
+}
+.faq-card-question:hover {
+  background: var(--white-faint);
+}
+.faq-card-toggle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--purple);
+  font-size: 1.2rem;
+  transition: transform 0.3s, background 0.3s;
+  background: var(--purple-dim);
+}
+.faq-card.open .faq-card-toggle {
+  transform: rotate(45deg);
+  background: var(--purple);
+  color: #fff;
+}
+.faq-card-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s;
+  border-top: 0px solid var(--border);
+}
+.faq-card.open .faq-card-answer {
+  border-top: 1px solid var(--border);
+}
+.faq-card-answer-inner {
+  padding: 1.25rem 1.75rem 1.5rem;
+  font-size: 0.92rem;
+  color: var(--white-dim);
+  line-height: 1.8;
+}
+.faq-category-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 0.35rem;
+  display: block;
+}
+.faq-cta-band {
+  margin-top: 5rem;
+  padding: 4rem;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  text-align: center;
+}
+.faq-cta-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  letter-spacing: 0.06em;
+  color: var(--white);
+  margin-bottom: 0.75rem;
+}
+.faq-cta-text {
+  font-size: 0.95rem;
+  color: var(--white-dim);
+  max-width: 480px;
+  margin: 0 auto 2rem;
+  line-height: 1.75;
+}
+
+/* Responsive FAQ grid */
+@media (max-width: 768px) {
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+  .faq-page-hero {
+    padding: 7rem 0 3rem;
+  }
+}
+
+
+/* ============================================================
+   SERVICES — NEW MOBILE-FIRST STYLES
+============================================================ */
+
+/* Service nav buttons on the hero — stack on mobile, row on desktop */
+.svc-nav-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+}
+@media (min-width: 769px) {
+  .svc-nav-btns { display: none; }
+}
+@media (min-width: 769px) {
+  .svc-nav-btns { flex-direction: row; gap: 1rem; }
+}
+.svc-nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg2);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.25s, background 0.25s, transform 0.2s;
+  font-family: var(--font-body);
+  width: 100%;
+}
+@media (min-width: 769px) {
+  .svc-nav-btn { flex: 1; flex-direction: column; align-items: flex-start; padding: 1.25rem 1.5rem; }
+  .svc-nav-arrow { align-self: flex-end; }
+}
+.svc-nav-btn:hover { transform: translateY(-3px); }
+.svc-nav-wedding:hover  { border-color: var(--gold);  background: rgba(201,168,76,0.08); }
+.svc-nav-corporate:hover{ border-color: #6fa8dc;       background: rgba(111,168,220,0.08); }
+.svc-nav-special:hover  { border-color: var(--teal);  background: var(--teal-dim); }
+.svc-nav-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--white-dim);
+  display: block;
+  margin-bottom: 0.2rem;
+}
+.svc-nav-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  letter-spacing: 0.08em;
+  color: var(--white);
+  display: block;
+}
+.svc-nav-wedding  .svc-nav-title { color: var(--gold); }
+.svc-nav-corporate .svc-nav-title { color: #6fa8dc; }
+.svc-nav-special  .svc-nav-title { color: var(--teal); }
+.svc-nav-arrow {
+  font-size: 1.2rem;
+  color: var(--white-dim);
+  flex-shrink: 0;
+}
+
+/* Image cards — desktop only */
+.svc-cards-desktop { display: block; }
+@media (max-width: 768px) { .svc-cards-desktop { display: none; } }
+.svc-img-card {
+  background: var(--bg2);
+  border: 1px solid;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s, border-color 0.3s;
+}
+.svc-img-wrap { height: 200px; overflow: hidden; }
+.svc-img-body { padding: 2rem; }
+
+/* What we offer grid */
+.svc-what-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+@media (min-width: 769px) {
+  .svc-what-grid { grid-template-columns: repeat(4, 1fr); }
+}
+.svc-what-item { border-top: 2px solid var(--purple); padding-top: 1.25rem; }
+.svc-what-title {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 0.4rem;
+}
+.svc-what-desc { font-size: 0.83rem; color: var(--white-dim); line-height: 1.65; }
+
+/* Guarantee section */
+.svc-guarantee-wrap {
+  background: var(--purple-dim);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+@media (min-width: 769px) {
+  .svc-guarantee-wrap { flex-direction: row; align-items: center; justify-content: space-between; }
+}
+.svc-guarantee-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+@media (min-width: 769px) {
+  .svc-guarantee-list { grid-template-columns: 1fr 1fr; gap: 0.5rem 2rem; }
+}
+.svc-guarantee-score { text-align: center; flex-shrink: 0; }
+
+/* Back button */
+.svc-back-btn {
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--white-dim);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.55rem 1.1rem;
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: color 0.2s, border-color 0.2s;
+}
+.svc-back-btn:hover { color: var(--purple); border-color: var(--purple); }
+
+/* Sub-page 2-column layout */
+.svc-two-col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+@media (min-width: 769px) {
+  .svc-two-col { grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+}
+
+/* Sub-page card grid */
+.svc-sub-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+@media (min-width: 600px) {
+  .svc-sub-grid { grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+}
+@media (min-width: 1024px) {
+  .svc-sub-grid { grid-template-columns: repeat(3, 1fr); }
+}
+.svc-sub-card {
+  padding: 1.5rem;
+  background: var(--bg3);
+  border: 1px solid;
+  border-radius: 6px;
+}
+.svc-sub-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.svc-sub-card-text { font-size: 0.87rem; color: var(--white-dim); line-height: 1.7; }
+
+/* Check list */
+.svc-check-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.45rem;
+}
+@media (min-width: 600px) {
+  .svc-check-list { grid-template-columns: 1fr 1fr; gap: 0.45rem 1.5rem; }
+}
+.svc-check-item {
+  font-size: 0.87rem;
+  color: var(--white-dim);
+  padding-left: 1.1rem;
+  position: relative;
+}
+.svc-check-item::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--chk, var(--purple));
+}
+
+/* Timeline */
+.svc-timeline { display: flex; flex-direction: column; }
+.svc-timeline-row {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 1rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.svc-timeline-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding-top: 0.15rem;
+}
+.svc-timeline-title {
+  font-size: 0.9rem;
+  color: var(--white);
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+}
+.svc-timeline-desc { font-size: 0.82rem; color: var(--white-dim); line-height: 1.6; }
+
+/* Playlist tab scroll hint */
+.playlist-tab-wrap {
+  position: relative;
+}
+.playlist-tab-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 100%;
+  background: linear-gradient(to right, transparent, var(--bg));
+  pointer-events: none;
+}
+.playlist-swipe-hint {
+  display: none;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .playlist-swipe-hint { display: block; }
+  .playlist-tab-wrap::after { display: block; }
+}
+@media (min-width: 769px) {
+  .playlist-tab-wrap::after { display: none; }
+}
+
+/* Mobile intro text for services page */
+.svc-mobile-intro {
+  display: block;
+  margin-top: 2rem;
+}
+@media (min-width: 769px) {
+  .svc-mobile-intro { display: none; }
+}
+
+/* Navigate function aliases */
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     HEADER
+============================================================ -->
+<header id="site-header">
+  <div class="logo" onclick="navigate('home')">
+    <svg class="logo-mark" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="19,2 36,12 36,30 19,36 2,30 2,12" fill="none" stroke="#7C4DFF" stroke-width="1.5"/>
+      <polygon points="19,7 30,14 30,28 19,33 8,28 8,14" fill="none" stroke="#00D9C8" stroke-width="0.75" opacity="0.6"/>
+      <circle cx="19" cy="19" r="4" fill="#7C4DFF"/>
+      <line x1="19" y1="7" x2="19" y2="13" stroke="#7C4DFF" stroke-width="1.5"/>
+      <line x1="19" y1="25" x2="19" y2="31" stroke="#7C4DFF" stroke-width="1.5"/>
+      <line x1="8" y1="14" x2="13.5" y2="17" stroke="#7C4DFF" stroke-width="1.5"/>
+      <line x1="24.5" y1="21" x2="30" y2="24" stroke="#7C4DFF" stroke-width="1.5"/>
+      <line x1="30" y1="14" x2="24.5" y2="17" stroke="#7C4DFF" stroke-width="1.5"/>
+      <line x1="13.5" y1="21" x2="8" y2="24" stroke="#7C4DFF" stroke-width="1.5"/>
+    </svg>
+    <div>
+      <div class="logo-text-top">Emerald City Sound</div>
+      <div class="logo-text-sub">& Events — Seattle, WA</div>
+    </div>
+  </div>
+
+  <nav>
+    <span class="nav-link active" data-page="home" onclick="navigate('home')">Home</span>
+    <span class="nav-link" data-page="services" onclick="navigate('services')">Services</span>
+    <span class="nav-link" data-page="gallery" onclick="navigate('gallery')">Gallery</span>
+    <span class="nav-link" data-page="playlists" onclick="navigate('playlists')">Playlists</span>
+    <span class="nav-link" data-page="reviews" onclick="navigate('reviews')">Reviews</span>
+    <span class="nav-link" data-page="about" onclick="navigate('about')">About</span>
+    <span class="nav-link" data-page="faq" onclick="navigate('faq')">FAQ</span>
+    <span class="nav-cta" onclick="navigate('contact')">Plan Your Event</span>
+  </nav>
+
+  <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <span class="mobile-nav-link" onclick="navigate('home'); closeMobileMenu()">Home</span>
+  <span class="mobile-nav-link" onclick="navigate('services'); closeMobileMenu()">Services</span>
+  <span class="mobile-nav-link" onclick="navigate('gallery'); closeMobileMenu()">Gallery</span>
+  <span class="mobile-nav-link" onclick="navigate('playlists'); closeMobileMenu()">Playlists</span>
+  <span class="mobile-nav-link" onclick="navigate('reviews'); closeMobileMenu()">Reviews</span>
+  <span class="mobile-nav-link" onclick="navigate('about'); closeMobileMenu()">About</span>
+  <span class="mobile-nav-link" onclick="navigate('faq'); closeMobileMenu()">FAQ</span>
+  <div class="mobile-cta" onclick="navigate('contact'); closeMobileMenu()">Plan Your Perfect Night</div>
+</div>
+
+
+<!-- ============================================================
+     HOME PAGE
+============================================================ -->
+<div id="page-home" class="page active">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-overlay-left"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Seattle's Premier DJ & Event Experience</div>
+      <h1 class="hero-headline">
+        UNFORGETTABLE<br>
+        EVENTS START<br>
+        <span class="serif-line">with the right DJ.</span>
+      </h1>
+      <p class="hero-sub">
+        More than music — we create atmosphere, energy, and unforgettable celebrations. Trusted across the Pacific Northwest for exceptional DJs, personalized playlists, and flawless event execution. We don't just press play — we create moments you'll talk about for years.
+      </p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="navigate('contact')">Plan Your Event</button>
+        <button class="btn btn-outline" onclick="navigate('services')">Explore Services</button>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">400+</div>
+          <div class="hero-stat-label">Events Produced</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">15+</div>
+          <div class="hero-stat-label">Years Experience</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">5.0</div>
+          <div class="hero-stat-label">Average Rating</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">100%</div>
+          <div class="hero-stat-label">Satisfaction Rate</div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-cue">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- Services Overview -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:3rem;">
+        <div class="section-label">What We Do</div>
+        <h2 class="section-title">Every Event.<br><em>One Team.</em></h2>
+        <div class="section-divider"></div>
+        <p class="section-subtitle">From intimate backyard gatherings to 1,000-person corporate galas — we bring the energy, the equipment, and the expertise.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-tile" onclick="navigate('services')">
+          <div class="service-tile-label">Our Specialty</div>
+          <div class="service-tile-title">Weddings</div>
+          <p class="service-tile-desc">Your ceremony, cocktail hour, and reception — seamlessly woven together with music that tells your story. Custom timelines, MC services, and a dance floor that never empties.</p>
+          <div class="service-tile-link">View Wedding Services →</div>
+        </div>
+        <div class="service-tile" onclick="navigate('services')">
+          <div class="service-tile-label">Professional Grade</div>
+          <div class="service-tile-title">Corporate Events</div>
+          <p class="service-tile-desc">Brand-safe playlists, punctual setup, and polished execution for your conferences, product launches, awards ceremonies, and team celebrations.</p>
+          <div class="service-tile-link">View Corporate Services →</div>
+        </div>
+        <div class="service-tile" onclick="navigate('services')">
+          <div class="service-tile-label">Any Occasion</div>
+          <div class="service-tile-title">Special Events</div>
+          <p class="service-tile-desc">Birthdays, anniversaries, graduations, club nights, holiday parties — if you're celebrating, we're ready. High-energy vibes, crowd interaction, and custom playlists for any vibe.</p>
+          <div class="service-tile-link">View Special Events →</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="glow-line"></div>
+
+  <!-- What We Provide -->
+  <section class="section" style="background:var(--bg2);">
+    <div class="container">
+     <div class="home-produce-grid">
+        <div>
+          <div class="section-label">Full-Service Production</div>
+          <h2 class="section-title">Sound.<br>Light.<br><em>Unforgettable.</em></h2>
+          <div class="section-divider"></div>
+          <p class="section-subtitle" style="font-size:0.9rem;">Beyond the music — we offer complete event production services to transform any venue.</p>
+          <button class="btn btn-outline" style="margin-top:2rem;" onclick="navigate('contact')">Get a Custom Quote</button>
+        </div>
+        <div class="what-we-do-grid">
+          <div class="wwd-item">
+            <div class="wwd-title">DJ Services</div>
+            <p class="wwd-desc">Professional open-format DJing across all genres and decades. We read the room — always.</p>
+          </div>
+          <div class="wwd-item">
+            <div class="wwd-title">Premium Sound</div>
+            <p class="wwd-desc">State-of-the-art audio equipment for venues of any size, from intimate suites to outdoor arenas.</p>
+          </div>
+          <div class="wwd-item">
+            <div class="wwd-title">Event Lighting</div>
+            <p class="wwd-desc">Dance floor lighting, uplighting, pin-spots, and custom light shows that set the mood perfectly.</p>
+          </div>
+          <div class="wwd-item">
+            <div class="wwd-title">MC Services</div>
+            <p class="wwd-desc">Experienced Master of Ceremonies to keep your event on schedule and your guests engaged.</p>
+          </div>
+          <div class="wwd-item">
+            <div class="wwd-title">Photo Booths</div>
+            <p class="wwd-desc">Custom-branded photo booths with instant prints — a guest-favorite add-on at every event.</p>
+          </div>
+          <div class="wwd-item">
+            <div class="wwd-title">Karaoke</div>
+            <p class="wwd-desc">Full professional karaoke systems with thousands of tracks for unforgettable nights.</p>
+          </div>
+          <div class="wwd-item">
+            <div class="wwd-title">Video Display</div>
+            <p class="wwd-desc">LED screens and projection for slideshows, live feeds, or custom visual content.</p>
+          </div>
+          <div class="wwd-item">
+            <div class="wwd-title">Custom Playlists</div>
+            <p class="wwd-desc">Every event gets a hand-crafted playlist built around your music preferences and guests.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:4rem;">
+        <div class="section-label">The Process</div>
+        <h2 class="section-title">How It Works</h2>
+        <div class="section-divider"></div>
+        <p class="section-subtitle">We've perfected our process over 400+ events. Here's what working with us looks like.</p>
+      </div>
+
+      <div class="process-list">
+        <div class="process-step">
+          <div class="process-num">01</div>
+          <div class="process-step-title">Initial Consultation</div>
+          <p class="process-step-desc">Reach out through our contact form or give us a call to tell us about your event — date, venue, timeline, guest count, and overall vibe. We’ll answer questions, discuss your vision, and confirm availability..</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">02</div>
+          <div class="process-step-title">Secure Your Date</div>
+          <p class="process-step-desc">Once you're ready to move forward, we’ll finalize the details and reserve your event date with a simple deposit and signed agreement.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">03</div>
+          <div class="process-step-title">Personalized Event Planning</div>
+          <p class="process-step-desc">We’ll schedule a planning consultation to go over your timeline, special moments, must-play songs, do-not-play list, announcements, and the overall flow of your event.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">04</div>
+          <div class="process-step-title">Unforgettable Performance</div>
+          <p class="process-step-desc">On event day, we arrive early, handle setup professionally, and deliver a seamless entertainment experience from start to finish — so you can relax and enjoy the celebration.</p>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Before / After Visual -->
+  <section class="section-sm impact-section">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:2.5rem;">
+        <div class="section-label">Our Impact</div>
+        <h2 class="section-title">We Fill Dance Floors.</h2>
+      </div>
+      <div class="before-after">
+        <div class="ba-panel ba-before">
+          <img src="images/wed9.jpg" alt="Empty venue before event" loading="lazy">
+          <div class="ba-overlay">
+            
+            <div class="ba-title">Full Dance Floor</div>
+          </div>
+        </div>
+        <div class="ba-panel ba-after">
+          <img src="images/wed10.jpg" alt="Packed dance floor during event" loading="lazy">
+          <div class="ba-overlay">
+            <div class="ba-label">Emerald City Sound</div>
+            <div class="ba-title">Packed & Dancing All Night</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <div class="testimonials-strip">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:3rem;">
+        <div class="section-label">Client Love</div>
+        <h2 class="section-title">What Our Clients Say</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Our wedding reception was absolutely perfect. The dance floor was packed from the first song to the last. They read the room better than we could have ever hoped. Every single song was exactly right."</p>
+          <div class="testimonial-author">Sarah & Michael T.</div>
+          <div class="testimonial-event">Wedding at Edgewater Hotel, Seattle</div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">"We've used Emerald City Sound for three Microsoft events now. Professional, flexible, and the sound quality is always outstanding. They represent our brand perfectly."</p>
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-author">Jennifer K., Events Manager</div>
+          <div class="testimonial-event">Microsoft Corporate Event</div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">"My 40th birthday party was legendary, and that's 100% because of ECS. They kept the energy HIGH all night, took requests seamlessly, and had the whole crowd going. Already booked them for next year."</p>
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-author">Marcus D.</div>
+          <div class="testimonial-event">40th Birthday Celebration, Bellevue</div>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:3rem;">
+        <button class="btn btn-outline" onclick="navigate('reviews')">Read All Reviews</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA Band -->
+  <section style="padding: 7rem 0; background: var(--bg); position:relative; overflow:hidden;">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 100%, rgba(124,77,255,0.12), transparent);pointer-events:none;"></div>
+    <div class="container" style="position:relative;">
+      <div class="text-center">
+        <div class="section-label">Ready to Begin?</div>
+        <h2 class="section-title" style="font-size: clamp(2.5rem,6vw,5rem);">
+          Your Perfect Night<br><em>Starts Here.</em>
+        </h2>
+        <p class="section-subtitle" style="margin: 1.5rem auto 2.5rem; font-size:1.1rem;">
+          Tell us about your event and we'll craft something truly extraordinary. We respond within 24 hours.
+        </p>
+        <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+          <button class="btn btn-primary" onclick="navigate('contact')" style="padding:1rem 2.5rem; font-size:0.85rem;">Plan Your Event</button>
+          <button class="btn btn-outline" onclick="navigate('about')">Learn Our Story</button>
+        </div>
+        <p style="margin-top:2rem; font-size:0.8rem; color:var(--white-dim); letter-spacing:0.1em;">
+          Serving Seattle, Bellevue, Redmond, Kirkland, Tacoma & all of the Pacific Northwest
+        </p>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-home -->
+
+
+<!-- ============================================================
+     SERVICES PAGE
+============================================================ -->
+<div id="page-services" class="page">
+
+  <div class="services-hero">
+    <div class="container text-center">
+      
+     <!-- Mobile headline — only shows on phone -->
+      <div class="svc-mobile-intro">
+        <div class="section-label">What We Offer</div>
+        <h2 class="section-title" style="font-size:clamp(2rem,6vw,3rem);">Every Occasion.<br><em>One Expert Team.</em></h2>
+        <div class="section-divider"></div>
+        <p style="font-size:0.9rem;color:var(--white-dim);line-height:1.75;margin-bottom:1.5rem;">From intimate ceremonies to large-scale corporate galas — we bring the energy, the equipment, and the expertise to make every event extraordinary. Tap your event type below to learn more.</p>
+      </div>
+
+      <!-- Service nav buttons — stack on mobile -->
+      <div class="svc-nav-btns">
+        <button class="svc-nav-btn svc-nav-wedding" onclick="navigate('weddings-page')">
+          <span class="svc-nav-label">Our Specialty</span>
+          <span class="svc-nav-title">Weddings</span>
+          <span class="svc-nav-arrow">→</span>
+        </button>
+        <button class="svc-nav-btn svc-nav-corporate" onclick="navigate('corporate-page')">
+          <span class="svc-nav-label">Professional Grade</span>
+          <span class="svc-nav-title">Corporate Events</span>
+          <span class="svc-nav-arrow">→</span>
+        </button>
+        <button class="svc-nav-btn svc-nav-special" onclick="navigate('special-page')">
+          <span class="svc-nav-label">Any Occasion</span>
+          <span class="svc-nav-title">Special Events</span>
+          <span class="svc-nav-arrow">→</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <hr class="rule">
+
+  <!-- Image Cards — hidden on mobile, shown on desktop -->
+ <section class="section svc-cards-desktop">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:3rem;">
+        <div class="section-label">Choose Your Event Type</div>
+        <h2 class="section-title">Every Occasion.<br><em>One Expert Team.</em></h2>
+        <div class="section-divider"></div>
+        <p class="section-subtitle">We don't press play — we create moments. Select your event type to learn exactly how we'll make yours unforgettable.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:1rem;">
+        <!-- Wedding card -->
+        <div onclick="navigate('weddings-page')" class="svc-img-card" style="border-color:rgba(201,168,76,0.25);" onmouseover="this.style.transform='translateY(-6px)';this.style.borderColor='var(--gold)'" onmouseout="this.style.transform='';this.style.borderColor='rgba(201,168,76,0.25)'">
+          <div class="svc-img-wrap">
+            <img src="images/wed.jpg" alt="Wedding" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform=''">
+          </div>
+          <div class="svc-img-body">
+            <div style="font-size:0.68rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;">Our Specialty</div>
+            <div style="font-family:var(--font-display);font-size:1.8rem;letter-spacing:0.08em;color:var(--white);margin-bottom:0.75rem;">Weddings</div>
+            <p style="font-size:0.88rem;color:var(--white-dim);line-height:1.7;margin-bottom:1.25rem;">Ceremony, cocktail hour, and reception — seamlessly woven together with music that tells your love story.</p>
+            <div style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);">View Wedding Services →</div>
+          </div>
+        </div>
+        <!-- Corporate card -->
+        <div onclick="navigate('corporate-page')" class="svc-img-card" style="border-color:rgba(111,168,220,0.25);" onmouseover="this.style.transform='translateY(-6px)';this.style.borderColor='#6fa8dc'" onmouseout="this.style.transform='';this.style.borderColor='rgba(111,168,220,0.25)'">
+          <div class="svc-img-wrap">
+            <img src="images/corporate2.jpg" alt="Corporate" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform=''">
+          </div>
+          <div class="svc-img-body">
+            <div style="font-size:0.68rem;letter-spacing:0.28em;text-transform:uppercase;color:#6fa8dc;margin-bottom:0.6rem;">Professional Grade</div>
+            <div style="font-family:var(--font-display);font-size:1.8rem;letter-spacing:0.08em;color:var(--white);margin-bottom:0.75rem;">Corporate Events</div>
+            <p style="font-size:0.88rem;color:var(--white-dim);line-height:1.7;margin-bottom:1.25rem;">Brand-safe entertainment and polished execution for conferences, galas, product launches, and team celebrations.</p>
+            <div style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:#6fa8dc;">View Corporate Services →</div>
+          </div>
+        </div>
+        <!-- Special Events card -->
+        <div onclick="navigate('special-page')" class="svc-img-card" style="border-color:rgba(0,217,200,0.2);" onmouseover="this.style.transform='translateY(-6px)';this.style.borderColor='var(--teal)'" onmouseout="this.style.transform='';this.style.borderColor='rgba(0,217,200,0.2)'">
+          <div class="svc-img-wrap">
+            <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=700&auto=format&fit=crop&q=80" alt="Special Events" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform=''">
+          </div>
+          <div class="svc-img-body">
+            <div style="font-size:0.68rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--teal);margin-bottom:0.6rem;">Any Occasion</div>
+            <div style="font-family:var(--font-display);font-size:1.8rem;letter-spacing:0.08em;color:var(--white);margin-bottom:0.75rem;">Special Events</div>
+            <p style="font-size:0.88rem;color:var(--white-dim);line-height:1.7;margin-bottom:1.25rem;">Birthdays, anniversaries, graduations, karaoke nights, holiday parties — if you're celebrating, we're ready.</p>
+            <div style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);">View Special Events →</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Provide grid -->
+  <section class="section" style="background:var(--bg2);border-top:1px solid var(--border);">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:2.5rem;">
+        <div class="section-label">Full Production Services</div>
+        <h2 class="section-title">Everything We Offer</h2>
+        <div class="section-divider"></div>
+        <p class="section-subtitle">Every service below is available as a standalone add-on or as part of a complete event package.</p>
+      </div>
+      <div class="svc-what-grid">
+        <div class="svc-what-item">
+          <div class="svc-what-title">DJ Services</div>
+          <p class="svc-what-desc">Open-format professional DJing across all genres and decades. We read the room — always.</p>
+        </div>
+        <div class="svc-what-item">
+          <div class="svc-what-title">Premium Sound</div>
+          <p class="svc-what-desc">State-of-the-art audio for venues of any size, from intimate suites to large outdoor spaces.</p>
+        </div>
+        <div class="svc-what-item">
+          <div class="svc-what-title">Event Lighting</div>
+          <p class="svc-what-desc">Dance floor lighting, uplighting, pin-spots, and custom light shows that set the perfect mood.</p>
+        </div>
+        <div class="svc-what-item">
+          <div class="svc-what-title">MC Services</div>
+          <p class="svc-what-desc">Experienced MC to keep your event on schedule and your guests entertained and engaged.</p>
+        </div>
+        <div class="svc-what-item">
+          <div class="svc-what-title">Photo Booths</div>
+          <p class="svc-what-desc">Custom-branded photo booths with instant prints — a guest favorite at every event.</p>
+        </div>
+        <div class="svc-what-item">
+          <div class="svc-what-title">Karaoke</div>
+          <p class="svc-what-desc">Full professional karaoke systems with thousands of tracks for unforgettable, interactive nights.</p>
+        </div>
+        <div class="svc-what-item">
+          <div class="svc-what-title">Video Display</div>
+          <p class="svc-what-desc">LED screens and projection for slideshows, live feeds, or custom visual event content.</p>
+        </div>
+        <div class="svc-what-item">
+          <div class="svc-what-title">Custom Playlists</div>
+          <p class="svc-what-desc">Every event gets a hand-crafted playlist built around your music preferences and crowd.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:4rem;">
+        <div class="section-label">The Process</div>
+        <h2 class="section-title">How It Works</h2>
+        <div class="section-divider"></div>
+        <p class="section-subtitle">We've refined our process over 400+ events. Here's what working with us looks like from first contact to final song.</p>
+      </div>
+      <div class="process-list">
+        <div class="process-step">
+          <div class="process-num">01</div>
+          <div class="process-step-title">Reach Out & Check Availability</div>
+          <p class="process-step-desc">Contact us through the form, phone, or email. We'll confirm your date is available and answer any initial questions quickly.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">02</div>
+          <div class="process-step-title">Personal Planning Consultation</div>
+          <p class="process-step-desc">A dedicated call to walk through your vision, event timeline, must-play and do-not-play lists, and every special moment.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">03</div>
+          <div class="process-step-title">Custom Playlist & Timeline Built</div>
+          <p class="process-step-desc">We craft your event's music and timeline from scratch — building the right energy arc and emotional flow for your specific event.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">04</div>
+          <div class="process-step-title">Flawless Day-Of Execution</div>
+          <p class="process-step-desc">We arrive early, set up completely, and coordinate with your vendors. You enjoy your event stress-free. We handle everything else.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guarantee Band -->
+  <section style="padding:4rem 0;background:var(--bg2);border-top:1px solid var(--border);">
+    <div class="container">
+      <div class="svc-guarantee-wrap">
+        <div>
+          <div style="font-size:0.72rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--purple);margin-bottom:0.75rem;">Our Promise to You</div>
+          <h3 style="font-family:var(--font-display);font-size:2rem;letter-spacing:0.06em;color:var(--white);margin-bottom:1.25rem;">The Emerald City Sound Guarantee</h3>
+          <div class="svc-guarantee-list">
+            <div style="font-size:0.88rem;color:var(--white-dim);padding-left:1.25rem;position:relative;"><span style="position:absolute;left:0;color:var(--purple);">✓</span> Fully insured with liability coverage</div>
+            <div style="font-size:0.88rem;color:var(--white-dim);padding-left:1.25rem;position:relative;"><span style="position:absolute;left:0;color:var(--purple);">✓</span> Backup equipment at every event</div>
+            <div style="font-size:0.88rem;color:var(--white-dim);padding-left:1.25rem;position:relative;"><span style="position:absolute;left:0;color:var(--purple);">✓</span> Replacement DJ guarantee for emergencies</div>
+            <div style="font-size:0.88rem;color:var(--white-dim);padding-left:1.25rem;position:relative;"><span style="position:absolute;left:0;color:var(--purple);">✓</span> Arrive early — fully set up before guests arrive</div>
+            <div style="font-size:0.88rem;color:var(--white-dim);padding-left:1.25rem;position:relative;"><span style="position:absolute;left:0;color:var(--purple);">✓</span> Written contract for every single booking</div>
+            <div style="font-size:0.88rem;color:var(--white-dim);padding-left:1.25rem;position:relative;"><span style="position:absolute;left:0;color:var(--purple);">✓</span> 15+ years & 400+ events of proven experience</div>
+          </div>
+        </div>
+        <div class="svc-guarantee-score">
+          <div style="font-family:var(--font-display);font-size:5rem;letter-spacing:0.04em;color:var(--purple);line-height:1;">5.0</div>
+          <div style="color:var(--gold);font-size:1.2rem;letter-spacing:0.2em;margin-bottom:0.3rem;">★★★★★</div>
+          <div style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--white-dim);">200+ Reviews</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="padding:5rem 0;background:var(--bg);border-top:1px solid var(--border);">
+    <div class="container text-center">
+      <div class="section-label">Get Started Today</div>
+      <h2 class="section-title">Ready to Make Your<br><em>Event Unforgettable?</em></h2>
+      <p class="section-subtitle" style="margin:1.5rem auto 2.5rem;">Tell us about your event and we'll craft a custom plan. No pressure — just honest advice and a fast response.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <button class="btn btn-primary" onclick="navigate('contact')" style="padding:1rem 2.5rem;">Plan Your Event</button>
+        <button class="btn btn-outline" onclick="navigate('reviews')">Read Client Reviews</button>
+      </div>
+      <p style="margin-top:2rem;font-size:0.8rem;color:var(--white-dim);letter-spacing:0.1em;">Serving Seattle, Bellevue, Redmond, Kirkland, Tacoma & all of the Pacific Northwest</p>
+    </div>
+  </section>
+
+</div><!-- /page-services -->
+
+
+<!-- ============================================================
+     WEDDINGS PAGE
+============================================================ -->
+<div id="page-weddings-page" class="page">
+
+  <div style="padding:10rem 0 4rem;background:var(--bg);">
+    <div class="container">
+      <div class="event-tag wedding" style="margin-bottom:1.5rem;">Weddings</div>
+      <h1 class="section-title" style="font-size:clamp(2.8rem,7vw,5.5rem);">Your Wedding.<br><em>Our Masterpiece.</em></h1>
+      <div class="section-divider"></div>
+      <p class="section-subtitle" style="font-size:1.05rem;max-width:600px;"> From the first note of your processional to the last song of the night — we bring the music, the experience, and the heart to make your wedding day truly unforgettable.</p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem;">
+        <button class="btn btn-gold" onclick="navigate('contact')">Check Wedding Availability</button>
+        <button class="svc-back-btn" onclick="navigate('services')">← All Services</button>
+      </div>
+    </div>
+  </div>
+  <hr class="rule">
+
+  <!-- Why Choose Us -->
+  <section class="section" style="background:var(--bg2);">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:3rem;">
+        <div class="section-label">Why Choose Us</div>
+        <h2 class="section-title">Why Couples Choose<br><em>Emerald City Sound</em></h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="svc-sub-grid">
+        <div class="svc-sub-card" style="border-color:rgba(201,168,76,0.2);">
+          <div class="svc-sub-card-title" style="color:var(--gold);">Personalized Experience</div>
+          <p class="svc-sub-card-text">We work closely with you to build a custom playlist and timeline that reflects your unique love story — not a template, not a recycled set. Every moment planned specifically for you.</p>
+        </div>
+        <div class="svc-sub-card" style="border-color:rgba(201,168,76,0.2);">
+          <div class="svc-sub-card-title" style="color:var(--gold);">Extensive Music Library</div>
+          <p class="svc-sub-card-text">From classic love songs to modern hits — we have the right music for every moment and every generation of guests at your celebration.</p>
+        </div>
+        <div class="svc-sub-card" style="border-color:rgba(201,168,76,0.2);">
+          <div class="svc-sub-card-title" style="color:var(--gold);">Professional MC Services</div>
+          <p class="svc-sub-card-text">Our MC services keep your reception flowing smoothly — entrances, toasts, dances, and every announcement handled with warmth and precision.</p>
+        </div>
+        <div class="svc-sub-card" style="border-color:rgba(201,168,76,0.2);">
+          <div class="svc-sub-card-title" style="color:var(--gold);">Premium Equipment</div>
+          <p class="svc-sub-card-text">State-of-the-art sound systems and lighting to create the perfect ambiance — from the ceremony processional to the final dance of the night.</p>
+        </div>
+        <div class="svc-sub-card" style="border-color:rgba(201,168,76,0.2);">
+          <div class="svc-sub-card-title" style="color:var(--gold);">Stress-Free Planning</div>
+          <p class="svc-sub-card-text">Detailed planning meetings and full timeline coordination so you can relax, breathe, and actually enjoy your wedding day without worrying about a thing.</p>
+        </div>
+        <div class="svc-sub-card" style="border-color:rgba(201,168,76,0.2);">
+          <div class="svc-sub-card-title" style="color:var(--gold);">Vendor Coordination</div>
+          <p class="svc-sub-card-text">We work directly with your planner, venue, and catering team so everyone is aligned and every transition happens exactly on cue — seamlessly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Included + Timeline -->
+  <section class="section">
+    <div class="container">
+      <div class="svc-two-col">
+        <div>
+          <div class="section-label">What's Included</div>
+          <h2 class="section-title" style="font-size:clamp(2rem,4vw,2.5rem);">Comprehensive<br><em>Wedding Services</em></h2>
+          <div class="section-divider"></div>
+          <p style="font-size:0.9rem;color:var(--white-dim);line-height:1.8;margin-bottom:1.75rem;">Everything below is included across your full wedding day — ceremony through send-off.</p>
+          <div class="included-list">
+            <div class="included-item">Professional DJ & MC services</div>
+            <div class="included-item">Pre-event planning consultation</div>
+            <div class="included-item">Custom playlist creation</div>
+            <div class="included-item">Ceremony music & sound</div>
+            <div class="included-item">Cocktail hour entertainment</div>
+            <div class="included-item">Reception music & dancing</div>
+            <div class="included-item">Premium sound system</div>
+            <div class="included-item">Wireless microphones</div>
+            <div class="included-item">Dance floor lighting</div>
+            <div class="included-item">Timeline coordination</div>
+            <div class="included-item">Special song requests</div>
+            <div class="included-item">Backup equipment on-site</div>
+          </div>
+          <button class="btn btn-gold" onclick="navigate('contact')" style="margin-top:2rem;">Get a Custom Wedding Quote</button>
+        </div>
+        <div>
+          <div class="section-label">Your Day, Step by Step</div>
+          <h2 class="section-title" style="font-size:clamp(2rem,4vw,2.5rem);">Your Wedding<br><em>Day Timeline</em></h2>
+          <div class="section-divider"></div>
+          <div class="svc-timeline">
+            <div class="svc-timeline-row">
+              <div class="svc-timeline-label" style="color:var(--gold);">Ceremony</div>
+              <div><div class="svc-timeline-title">Processional & Recessional</div><div class="svc-timeline-desc">Beautiful music for your walk down the aisle and your celebration exit.</div></div>
+            </div>
+            <div class="svc-timeline-row">
+              <div class="svc-timeline-label" style="color:var(--gold);">Cocktails</div>
+              <div><div class="svc-timeline-title">Background Entertainment</div><div class="svc-timeline-desc">Elegant music while guests mingle and enjoy refreshments.</div></div>
+            </div>
+            <div class="svc-timeline-row">
+              <div class="svc-timeline-label" style="color:var(--gold);">Reception</div>
+              <div><div class="svc-timeline-title">Grand Entrance & Introductions</div><div class="svc-timeline-desc">Professional MC services to introduce the wedding party and newlyweds.</div></div>
+            </div>
+            <div class="svc-timeline-row">
+              <div class="svc-timeline-label" style="color:var(--gold);">Dinner</div>
+              <div><div class="svc-timeline-title">Toasts & Special Moments</div><div class="svc-timeline-desc">First dance, parent dances, toasts, and cake cutting — flawlessly on cue.</div></div>
+            </div>
+            <div class="svc-timeline-row">
+              <div class="svc-timeline-label" style="color:var(--gold);">Dancing</div>
+              <div><div class="svc-timeline-title">Party Time</div><div class="svc-timeline-desc">High-energy music to keep every guest on the dance floor all night long.</div></div>
+            </div>
+            <div class="svc-timeline-row" style="border-bottom:none;">
+              <div class="svc-timeline-label" style="color:var(--gold);">Send-Off</div>
+              <div><div class="svc-timeline-title">Grand Finale</div><div class="svc-timeline-desc">The perfect final song to end your celebration on an unforgettable high.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA + back link -->
+  <section style="padding:5rem 0;background:var(--bg2);border-top:1px solid var(--border);">
+    <div class="container text-center">
+      <h2 class="section-title">Your Perfect Wedding<br><em>Starts with a Conversation.</em></h2>
+      <p class="section-subtitle" style="margin:1.5rem auto 2.5rem;">Reach out to check your date availability. We respond within 24 hours.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <button class="btn btn-gold" onclick="navigate('contact')" style="padding:1rem 2.5rem;">Check Your Date</button>
+        <button class="btn btn-outline" onclick="navigate('reviews')">Read Wedding Reviews</button>
+      </div>
+      <div style="margin-top:2.5rem;">
+        <button class="svc-back-btn" onclick="navigate('services')">← Back to All Services</button>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-weddings-page -->
+
+
+<!-- ============================================================
+     CORPORATE EVENTS PAGE
+============================================================ -->
+<div id="page-corporate-page" class="page">
+
+  <div style="padding:10rem 0 4rem;background:var(--bg);">
+    <div class="container">
+      <div class="event-tag corporate" style="margin-bottom:1.5rem;">Corporate Events</div>
+      <h1 class="section-title" style="font-size:clamp(2.8rem,7vw,5.5rem);">Entertainment That<br><em>Reflects Your Brand.</em></h1>
+      <div class="section-divider"></div>
+      <p class="section-subtitle" style="font-size:1.05rem;max-width:620px;">From intimate team gatherings to large-scale corporate galas — we deliver the professionalism, the sound, and the polish your company deserves.</p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem;">
+        <button class="btn btn-outline" onclick="navigate('contact')" style="border-color:#6fa8dc;color:#6fa8dc;">Request a Corporate Proposal</button>
+        <button class="svc-back-btn" onclick="navigate('services')">← All Services</button>
+      </div>
+    </div>
+  </div>
+  <hr class="rule">
+
+  <!-- Events We Excel At -->
+  <section class="section" style="background:var(--bg2);">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:3rem;">
+        <div class="section-label">Corporate Events</div>
+        <h2 class="section-title">Events We Excel At</h2>
+        <div class="section-divider"></div>
+        <p class="section-subtitle">Professional entertainment for all your business occasions — delivered with the reliability your company deserves.</p>
+      </div>
+      <div class="svc-sub-grid">
+        <div class="svc-sub-card" style="border-color:rgba(111,168,220,0.2);">
+          <div class="svc-sub-card-title" style="color:#6fa8dc;">Company Parties</div>
+          <p class="svc-sub-card-text">Holiday parties, summer picnics, and team celebrations that genuinely boost morale and create real connections between colleagues.</p>
+        </div>
+        <div class="svc-sub-card" style="border-color:rgba(111,168,220,0.2);">
+          <div class="svc-sub-card-title" style="color:#6fa8dc;">Team Building Events</div>
+          <p class="svc-sub-card-text">Interactive entertainment that brings your team together and strengthens workplace relationships in a fun, memorable setting.</p>
+        </div>
+        <div class="svc-sub-card" style="border-color:rgba(111,168,220,0.2);">
+          <div class="svc-sub-card-title" style="color:#6fa8dc;">Award Ceremonies</div>
+          <p class="svc-sub-card-text">Professional MC services and music that elevate your achievements celebration and give every winner their well-earned moment.</p>
+        </div>
+        <div class="svc-sub-card" style="border-color:rgba(111,168,220,0.2);">
+          <div class="svc-sub-card-title" style="color:#6fa8dc;">Product Launches</div>
+          <p class="svc-sub-card-text">Create buzz, energy, and excitement for your new product or campaign with entertainment that matches your brand's vision perfectly.</p>
+        </div>
+        <div class="svc-sub-card" style="border-color:rgba(111,168,220,0.2);">
+          <div class="svc-sub-card-title" style="color:#6fa8dc;">Conferences & Conventions</div>
+          <p class="svc-sub-card-text">Entertainment for networking events, receptions, and after-parties that keeps your attendees energized and fully engaged.</p>
+        </div>
+        <div class="svc-sub-card" style="border-color:rgba(111,168,220,0.2);">
+          <div class="svc-sub-card-title" style="color:#6fa8dc;">Client Appreciation</div>
+          <p class="svc-sub-card-text">Impress your clients and partners with polished, professional entertainment at appreciation events that reflect well on your brand.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Professional Approach + Why Choose -->
+  <section class="section">
+    <div class="container">
+      <div class="svc-two-col">
+        <div>
+          <div class="section-label">Our Approach</div>
+          <h2 class="section-title" style="font-size:clamp(2rem,4vw,2.5rem);">Professional Standards<br><em>Built In.</em></h2>
+          <div class="section-divider"></div>
+          <p style="font-size:0.95rem;color:var(--white-dim);line-height:1.85;margin-bottom:1.25rem;">We understand that corporate events require a different level of professionalism. Our team works closely with your event planners to ensure seamless integration with your schedule and objectives.</p>
+          <p style="font-size:0.95rem;color:var(--white-dim);line-height:1.85;margin-bottom:1.25rem;">From appropriate music selection to polished presentation and guest interaction, we help create a seamless experience while representing your company with professionalism and care. We're experienced in reading the room — quiet background music for networking, building energy for award announcements, or full-party mode for after-hours.</p>
+          <p style="font-size:0.95rem;color:var(--white-dim);line-height:1.85;margin-bottom:2rem;">We arrive early, coordinate with your vendors, review your agenda in detail, and remain fully flexible to any real-time changes on the day of your event.</p>
+          <button class="btn btn-outline" onclick="navigate('contact')" style="border-color:#6fa8dc;color:#6fa8dc;">Request a Corporate Proposal</button>
+        </div>
+        <div>
+          <div class="section-label" style="margin-bottom:1.25rem;">Why Businesses Choose Us</div>
+          <div class="svc-check-list">
+            <div class="svc-check-item" style="--chk:#6fa8dc;">Premium & reliable service</div>
+            <div class="svc-check-item" style="--chk:#6fa8dc;">Customized entertainment plans</div>
+            <div class="svc-check-item" style="--chk:#6fa8dc;">Appropriate music selection</div>
+            <div class="svc-check-item" style="--chk:#6fa8dc;">Professional appearance & conduct</div>
+            <div class="svc-check-item" style="--chk:#6fa8dc;">Flexible scheduling</div>
+            <div class="svc-check-item" style="--chk:#6fa8dc;">Volume control & awareness</div>
+            <div class="svc-check-item" style="--chk:#6fa8dc;">MC & announcement services</div>
+            <div class="svc-check-item" style="--chk:#6fa8dc;">Premium sound equipment</div>
+            <div class="svc-check-item" style="--chk:#6fa8dc;">Backup systems on-site</div>
+            <div class="svc-check-item" style="--chk:#6fa8dc;">Liability insurance</div>
+            <div class="svc-check-item" style="--chk:#6fa8dc;">Punctual setup & breakdown</div>
+            <div class="svc-check-item" style="--chk:#6fa8dc;">Extensive corporate experience</div>
+          </div>
+          <div style="margin-top:2rem;padding:1.75rem;background:var(--bg2);border:1px solid rgba(111,168,220,0.2);border-radius:6px;">
+            <div style="font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:#6fa8dc;margin-bottom:1rem;">Event Experience Includes</div>
+            <div class="svc-check-list">
+              <div class="svc-check-item" style="--chk:#6fa8dc;">Microsoft corporate events & team celebrations</div>
+              <div class="svc-check-item" style="--chk:#6fa8dc;">Argosy Cruises Seattle boat tour events</div>
+              <div class="svc-check-item" style="--chk:#6fa8dc;">Award ceremonies & product launch events</div>
+              <div class="svc-check-item" style="--chk:#6fa8dc;">Conference networking receptions & galas</div>
+              <div class="svc-check-item" style="--chk:#6fa8dc;">Client appreciation & holiday parties</div>
+              <div class="svc-check-item" style="--chk:#6fa8dc;">Company anniversary & milestone events</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA + back link -->
+  <section style="padding:5rem 0;background:var(--bg2);border-top:1px solid var(--border);">
+    <div class="container text-center">
+      <h2 class="section-title">Let's Make Your Next<br><em>Corporate Event Exceptional.</em></h2>
+      <p class="section-subtitle" style="margin:1.5rem auto 2.5rem;">Tell us about your event and we'll put together a custom proposal. Fast turnaround, no obligation.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <button class="btn btn-outline" onclick="navigate('contact')" style="padding:1rem 2.5rem;border-color:#6fa8dc;color:#6fa8dc;">Request a Proposal</button>
+        <button class="btn btn-outline" onclick="navigate('reviews')">Read Client Reviews</button>
+      </div>
+      <div style="margin-top:2.5rem;">
+        <button class="svc-back-btn" onclick="navigate('services')">← Back to All Services</button>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-corporate-page -->
+
+
+<!-- ============================================================
+     SPECIAL EVENTS PAGE
+============================================================ -->
+<div id="page-special-page" class="page">
+
+  <div style="padding:10rem 0 4rem;background:var(--bg);">
+    <div class="container">
+      <div class="event-tag special" style="margin-bottom:1.5rem;">Special Events</div>
+      <h1 class="section-title" style="font-size:clamp(2.8rem,7vw,5.5rem);">Every Celebration<br><em>Deserves a Soundtrack.</em></h1>
+      <div class="section-divider"></div>
+     <p class="section-subtitle" style="font-size:1.05rem;max-width:620px;"> From backyard birthday parties to sold-out karaoke nights — we bring the energy, the music, and the experience to make every celebration extraordinary. Tell us about your event and we'll make it one to remember.</p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem;">
+        <button class="btn btn-primary" onclick="navigate('contact')">Plan Your Celebration</button>
+        <button class="svc-back-btn" onclick="navigate('services')">← All Services</button>
+      </div>
+    </div>
+  </div>
+  <hr class="rule">
+
+  <!-- Events We Specialize In -->
+  <section class="section" style="background:var(--bg2);">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:3rem;">
+        <div class="section-label">Events We Specialize In</div>
+        <h2 class="section-title">No Matter the Occasion,<br><em>We Bring the Perfect Soundtrack.</em></h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="svc-sub-grid">
+        <div class="svc-sub-card" style="border-color:rgba(0,217,200,0.2);">
+          <div class="svc-sub-card-title" style="color:var(--teal);">Birthday Parties</div>
+          <p class="svc-sub-card-text">From milestone birthdays to sweet sixteens, we create the perfect party atmosphere for all ages — high energy, crowd interaction, and songs everyone loves.</p>
+        </div>
+        <div class="svc-sub-card" style="border-color:rgba(0,217,200,0.2);">
+          <div class="svc-sub-card-title" style="color:var(--teal);">Anniversaries</div>
+          <p class="svc-sub-card-text">Celebrate your love story with music that spans the years and brings back the memories that matter most. Romantic, personal, and perfectly timed.</p>
+        </div>
+        <div class="svc-sub-card" style="border-color:rgba(0,217,200,0.2);">
+          <div class="svc-sub-card-title" style="color:var(--teal);">Graduations</div>
+          <p class="svc-sub-card-text">Mark this incredible achievement with high-energy entertainment that honors graduates and gets families and friends dancing on their feet.</p>
+        </div>
+        <div class="svc-sub-card" style="border-color:rgba(0,217,200,0.2);">
+          <div class="svc-sub-card-title" style="color:var(--teal);">Holiday Parties</div>
+          <p class="svc-sub-card-text">Festive and fun entertainment for company holiday parties, family gatherings, and seasonal celebrations of any size and style.</p>
+        </div>
+        <div class="svc-sub-card" style="border-color:rgba(0,217,200,0.2);">
+          <div class="svc-sub-card-title" style="color:var(--teal);">Karaoke Nights</div>
+          <p class="svc-sub-card-text">Full professional karaoke setups with thousands of tracks — the ultimate crowd participation experience that gets even shy guests on the mic.</p>
+        </div>
+        <div class="svc-sub-card" style="border-color:rgba(0,217,200,0.2);">
+          <div class="svc-sub-card-title" style="color:var(--teal);">Any Celebration</div>
+          <p class="svc-sub-card-text">Reunions, club nights, after-hours shows, private parties — whatever you're celebrating, we customize everything to make it unforgettable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Provide + Why Choose Us -->
+  <section class="section">
+    <div class="container">
+      <div class="svc-two-col">
+        <div>
+          <div class="section-label">What We Provide</div>
+          <h2 class="section-title" style="font-size:clamp(2rem,4vw,2.5rem);">Complete Entertainment<br><em>Solutions</em></h2>
+          <div class="section-divider"></div>
+          <p style="font-size:0.9rem;color:var(--white-dim);line-height:1.8;margin-bottom:1.75rem;">Mix and match services to create the perfect entertainment package for your occasion.</p>
+          <div class="svc-check-list">
+            <div class="svc-check-item" style="--chk:var(--teal);">Professional DJ services</div>
+            <div class="svc-check-item" style="--chk:var(--teal);">MC & announcements</div>
+            <div class="svc-check-item" style="--chk:var(--teal);">Custom music selection</div>
+            <div class="svc-check-item" style="--chk:var(--teal);">Premium sound system</div>
+            <div class="svc-check-item" style="--chk:var(--teal);">Dance floor lighting</div>
+            <div class="svc-check-item" style="--chk:var(--teal);">Wireless microphones</div>
+            <div class="svc-check-item" style="--chk:var(--teal);">Music for all ages</div>
+            <div class="svc-check-item" style="--chk:var(--teal);">Interactive entertainment</div>
+            <div class="svc-check-item" style="--chk:var(--teal);">Special requests welcome</div>
+            <div class="svc-check-item" style="--chk:var(--teal);">Professional setup</div>
+            <div class="svc-check-item" style="--chk:var(--teal);">Reliable backup equipment</div>
+            <div class="svc-check-item" style="--chk:var(--teal);">Flexible packages</div>
+          </div>
+          <button class="btn btn-primary" onclick="navigate('contact')" style="margin-top:2rem;">Plan Your Celebration</button>
+        </div>
+        <div>
+          <div class="section-label">Why Choose Us</div>
+          <h2 class="section-title" style="font-size:clamp(2rem,4vw,2.5rem);">Experience You<br><em>Can Feel.</em></h2>
+          <div class="section-divider"></div>
+          <p style="font-size:0.95rem;color:var(--white-dim);line-height:1.85;margin-bottom:1.25rem;">With over 15 years of experience entertaining at special events throughout Washington, we know how to create the perfect atmosphere for any celebration. Whether you're hosting an intimate gathering or a large party, we have the expertise and equipment to make it memorable.</p>
+          <p style="font-size:0.95rem;color:var(--white-dim);line-height:1.85;margin-bottom:1.25rem;">Our extensive music library spans all genres and decades — ensuring we have the perfect songs for guests of all ages. We work with you to understand your vision and customize everything to match your event's unique style.</p>
+          <p style="font-size:0.95rem;color:var(--white-dim);line-height:1.85;">With 400+ events and a 5.0 rating across all review platforms, we bring professionalism, reliability, and genuine passion to every single event we serve.</p>
+          <div style="margin-top:2rem;padding:1.75rem;background:var(--teal-dim);border:1px solid rgba(0,217,200,0.2);border-radius:6px;">
+            <div style="font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--teal);margin-bottom:1rem;">Our Guarantee</div>
+            <div class="svc-check-list">
+              <div class="svc-check-item" style="--chk:var(--teal);">Fully insured with liability coverage</div>
+              <div class="svc-check-item" style="--chk:var(--teal);">Backup equipment at every event</div>
+              <div class="svc-check-item" style="--chk:var(--teal);">Replacement DJ guarantee for emergencies</div>
+              <div class="svc-check-item" style="--chk:var(--teal);">Arrive early — fully set up before guests</div>
+              <div class="svc-check-item" style="--chk:var(--teal);">Written contract for every booking</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA + back link -->
+  <section style="padding:5rem 0;background:var(--bg2);border-top:1px solid var(--border);">
+    <div class="container text-center">
+      <h2 class="section-title">Let's Celebrate<br><em>Something Extraordinary.</em></h2>
+      <p class="section-subtitle" style="margin:1.5rem auto 2.5rem;">Tell us about your event and we'll make it unforgettable. We respond within 24 hours.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <button class="btn btn-primary" onclick="navigate('contact')" style="padding:1rem 2.5rem;">Plan Your Event</button>
+        <button class="btn btn-outline" onclick="navigate('playlists')">Browse Sample Playlists</button>
+      </div>
+      <div style="margin-top:2.5rem;">
+        <button class="svc-back-btn" onclick="navigate('services')">← Back to All Services</button>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-special-page -->
+
+
+<!-- ============================================================
+     GALLERY PAGE
+============================================================ -->
+<div id="page-gallery" class="page">
+  <div class="gallery-hero">
+    <div class="container text-center">
+      <div class="section-label">Portfolio</div>
+      <h1 class="section-title" style="font-size:clamp(3rem,7vw,5.5rem);">Gallery</h1>
+      <div class="section-divider"></div>
+      <p class="section-subtitle">From elegant weddings to high-energy celebrations, explore some of the unforgettable events we’ve helped bring to life across the Pacific Northwest.</p>
+    </div>
+  </div>
+  <div class="container" style="padding-bottom:6rem;">
+    <div class="gallery-filters">
+      <button class="filter-btn active" onclick="filterGallery('all', this)">All Events</button>
+      <button class="filter-btn" onclick="filterGallery('wedding', this)">Weddings</button>
+      <button class="filter-btn" onclick="filterGallery('corporate', this)">Corporate</button>
+      <button class="filter-btn" onclick="filterGallery('party', this)">Parties & Special Events</button>
+      <button class="filter-btn" onclick="filterGallery('lighting', this)">Lighting Design</button>
+    </div>
+
+    <div class="gallery-masonry" id="gallery-masonry">
+
+  <!-- WEDDINGS -->
+  <div class="gallery-item" data-category="wedding" onclick="openLightbox(this)">
+    <img src="images/wed.jpg" alt="Wedding dance floor" loading="lazy">
+    <div class="gallery-item-overlay"><div class="gallery-item-label">Wedding Reception</div></div>
+  </div>
+  <div class="gallery-item" data-category="wedding" onclick="openLightbox(this)">
+    <img src="images/wed4.jpg" alt="Wedding ceremony" loading="lazy">
+    <div class="gallery-item-overlay"><div class="gallery-item-label">Wedding Reception Vibes</div></div>
+  </div>
+  <div class="gallery-item" data-category="wedding" onclick="openLightbox(this)">
+    <img src="images/wed3.jpg" alt="Wedding ceremony" loading="lazy">
+    <div class="gallery-item-overlay"><div class="gallery-item-label">Wedding Reception</div></div>
+  </div>
+  <div class="gallery-item" data-category="wedding" onclick="openLightbox(this)">
+    <img src="images/wed2.jpg" alt="Wedding ceremony" loading="lazy">
+    <div class="gallery-item-overlay"><div class="gallery-item-label">Wedding Reception Mind Blown!</div></div>
+  </div>
+  <div class="gallery-item" data-category="wedding" onclick="openLightbox(this)">
+    <img src="images/weddancing.jpg" alt="Wedding dancing" loading="lazy">
+    <div class="gallery-item-overlay"><div class="gallery-item-label">Wedding Dancing</div></div>
+  </div>
+  <div class="gallery-item" data-category="wedding" onclick="openLightbox(this)">
+    <img src="images/wed8.jpg" alt="Wedding ceremony" loading="lazy">
+    <div class="gallery-item-overlay"><div class="gallery-item-label">Wedding Reception</div></div>
+  </div>
+  <div class="gallery-item" data-category="wedding" onclick="openLightbox(this)">
+    <img src="images/wed6.jpg" alt="Wedding ceremony" loading="lazy">
+    <div class="gallery-item-overlay"><div class="gallery-item-label">Wedding Reception</div></div>
+  </div>
+
+  <div class="gallery-item" data-category="wedding" onclick="openLightbox(this)">
+    <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&auto=format&fit=crop&q=80" alt="Wedding ceremony" loading="lazy">
+    <div class="gallery-item-overlay"><div class="gallery-item-label">Wedding Ceremony</div></div>
+  </div>
+
+  <!-- DJ & LIGHTING -->
+  <div class="gallery-item" data-category="lighting" onclick="openLightbox(this)">
+    <img src="images/dj.jpg" alt="DJ setup" loading="lazy">
+    <div class="gallery-item-overlay"><div class="gallery-item-label">Live DJ Performance</div></div>
+  </div>
+  <div class="gallery-item" data-category="lighting" onclick="openLightbox(this)">
+    <img src="images/lights2.jpg" alt="Event lighting" loading="lazy">
+    <div class="gallery-item-overlay"><div class="gallery-item-label">Event Lighting Design</div></div>
+  </div>
+  <div class="gallery-item" data-category="lighting" onclick="openLightbox(this)">
+    <img src="images/lights3.jpg" alt="Event lighting" loading="lazy">
+    <div class="gallery-item-overlay"><div class="gallery-item-label">Event Lighting Design</div></div>
+  </div>
+  <div class="gallery-item" data-category="lighting" onclick="openLightbox(this)">
+    <img src="images/lights4.jpg" alt="Event lighting" loading="lazy">
+    <div class="gallery-item-overlay"><div class="gallery-item-label">Event Lighting Design</div></div>
+  </div>
+  <div class="gallery-item" data-category="lighting" onclick="openLightbox(this)">
+    <img src="images/lights5.jpg" alt="Event lighting" loading="lazy">
+    <div class="gallery-item-overlay"><div class="gallery-item-label">Event Lighting Design</div></div>
+  </div>
+  <div class="gallery-item" data-category="lighting" onclick="openLightbox(this)">
+    <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&auto=format&fit=crop&q=80" alt="Stage lighting" loading="lazy">
+    <div class="gallery-item-overlay"><div class="gallery-item-label">Stage Production</div></div>
+  </div>
+  <div class="gallery-item" data-category="lighting" onclick="openLightbox(this)">
+    <img src="https://images.unsplash.com/photo-1574391884720-bbc3740c59d1?w=600&auto=format&fit=crop&q=80" alt="Lighting effects" loading="lazy">
+    <div class="gallery-item-overlay"><div class="gallery-item-label">Uplighting Design</div></div>
+  </div>
+    <div class="gallery-item" data-category="lighting" onclick="openLightbox(this)">
+    <img src="images/wed5.jpg" alt="Wedding" loading="lazy">
+    <div class="gallery-item-overlay"><div class="gallery-item-label">Wedding Celebration</div></div>
+  </div>
+
+  <!-- CORPORATE -->
+  <div class="gallery-item" data-category="corporate" onclick="openLightbox(this)">
+    <img src="images/corporate.jpg" alt="Corporate event" loading="lazy">
+    <div class="gallery-item-overlay"><div class="gallery-item-label">Corporate Gala</div></div>
+  </div>
+  <div class="gallery-item" data-category="corporate" onclick="openLightbox(this)">
+    <img src="images/corporate2.jpg" alt="Corporate event" loading="lazy">
+    <div class="gallery-item-overlay"><div class="gallery-item-label">Corporate Gala</div></div>
+  </div>
+  <div class="gallery-item" data-category="corporate" onclick="openLightbox(this)">
+    <img src="images/corporate3.jpg" alt="Corporate event" loading="lazy">
+    <div class="gallery-item-overlay"><div class="gallery-item-label">Corporate Gala</div></div>
+  </div>
+  <div class="gallery-item" data-category="corporate" onclick="openLightbox(this)">
+    <img src="images/corporate4.jpg" alt="Corporate event" loading="lazy">
+    <div class="gallery-item-overlay"><div class="gallery-item-label">Corporate Event</div></div>
+  </div>
+  <div class="gallery-item" data-category="corporate" onclick="openLightbox(this)">
+    <img src="images/corporate5.jpg" alt="Corporate event" loading="lazy">
+    <div class="gallery-item-overlay"><div class="gallery-item-label">Corporate Event</div></div>
+  </div>
+  <div class="gallery-item" data-category="wedding" onclick="openLightbox(this)">
+    <img src="images/boat.jpg" alt="Argosy boat event" loading="lazy">
+    <div class="gallery-item-overlay"><div class="gallery-item-label">Argosy Cruise Wedding</div></div>
+  </div>
+  <div class="gallery-item" data-category="corporate" onclick="openLightbox(this)">
+    <img src="images/corporate6.jpg" alt="Corporate event setup" loading="lazy">
+    <div class="gallery-item-overlay"><div class="gallery-item-label">Awards Ceremony</div></div>
+  </div>
+
+  <!-- PARTIES & SPECIAL EVENTS -->
+  <div class="gallery-item" data-category="party" onclick="openLightbox(this)">
+    <img src="images/party.jpg" alt="Party crowd" loading="lazy">
+    <div class="gallery-item-overlay"><div class="gallery-item-label">Birthday Celebration</div></div>
+  </div>
+  <div class="gallery-item" data-category="party" onclick="openLightbox(this)">
+    <img src="images/party2.jpg" alt="Party crowd" loading="lazy">
+    <div class="gallery-item-overlay"><div class="gallery-item-label">Birthday Celebration</div></div>
+  </div>
+  <div class="gallery-item" data-category="party" onclick="openLightbox(this)">
+    <img src="images/party3.jpg" alt="Party crowd" loading="lazy">
+    <div class="gallery-item-overlay"><div class="gallery-item-label">Party Night</div></div>
+  </div>
+  <div class="gallery-item" data-category="party" onclick="openLightbox(this)">
+    <img src="images/party5.jpg" alt="Party crowd" loading="lazy">
+    <div class="gallery-item-overlay"><div class="gallery-item-label">Birthday Celebration</div></div>
+  </div>
+  <div class="gallery-item" data-category="party" onclick="openLightbox(this)">
+    <img src="images/kareoke.jpg" alt="Karaoke night" loading="lazy">
+    <div class="gallery-item-overlay"><div class="gallery-item-label">Karaoke Night</div></div>
+  </div>
+  <div class="gallery-item" data-category="party" onclick="openLightbox(this)">
+    <img src="images/kareoke2.jpg" alt="Karaoke night" loading="lazy">
+    <div class="gallery-item-overlay"><div class="gallery-item-label">Karaoke Night</div></div>
+  </div>
+  <div class="gallery-item" data-category="party" onclick="openLightbox(this)">
+    <img src="images/karaoke3.jpg" alt="Karaoke night" loading="lazy">
+    <div class="gallery-item-overlay"><div class="gallery-item-label">Karaoke Night</div></div>
+  </div>
+  <div class="gallery-item" data-category="party" onclick="openLightbox(this)">
+  <img src="images/santa.jpg" alt="Christmas Party" loading="lazy">
+    <div class="gallery-item-overlay"><div class="gallery-item-label">Christmas Party</div></div>
+  </div>
+   <div class="gallery-item" data-category="party" onclick="openLightbox(this)">
+  <img src="images/halloween.jpg" alt="Halloween Party" loading="lazy">
+    <div class="gallery-item-overlay"><div class="gallery-item-label">Halloween Party</div></div>
+  </div>
+  <div class="gallery-item" data-category="party" onclick="openLightbox(this)">
+    <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&auto=format&fit=crop&q=80" alt="DJ performance" loading="lazy">
+    <div class="gallery-item-overlay"><div class="gallery-item-label">Club Night</div></div>
+  </div>
+   <div class="gallery-item" data-category="party" onclick="openLightbox(this)">
+  <img src="images/club.jpg" alt="Clun Night" loading="lazy">
+    <div class="gallery-item-overlay"><div class="gallery-item-label">Club Party</div></div>
+  </div>
+   <div class="gallery-item" data-category="party" onclick="openLightbox(this)">
+  <img src="images/club2.jpg" alt="Christmas Party" loading="lazy">
+    <div class="gallery-item-overlay"><div class="gallery-item-label">Club Party</div></div>
+  </div>
+
+</div>
+
+    <div style="margin-top:4rem;text-align:center;padding:3rem;border:1px solid var(--border);border-radius:8px;background:var(--bg2);">
+      <div style="font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--teal);margin-bottom:1rem;">Coming Soon</div>
+      <h3 style="font-family:var(--font-serif);font-size:1.75rem;font-style:italic;color:var(--white);margin-bottom:0.75rem;">More Photos & Video Highlights</h3>
+      <p style="font-size:0.88rem;color:var(--white-dim);max-width:480px;margin:0 auto 1.5rem;">Full video reels and additional event galleries are being added. Check back soon — or follow us on Instagram for regular updates.</p>
+      <button class="btn btn-outline" onclick="navigate('contact')">Book Your Event</button>
+    </div>
+  </div>
+</div><!-- /page-gallery -->
+
+
+<!-- ============================================================
+     PLAYLISTS PAGE
+============================================================ -->
+<div id="page-playlists" class="page">
+  <div class="playlists-hero">
+    <div class="container text-center">
+      <div class="section-label">Sample Playlists</div>
+      <h1 class="section-title" style="font-size:clamp(3rem,7vw,5.5rem);">The Music</h1>
+      <div class="section-divider"></div>
+      <p class="section-subtitle">Instead of telling you we "play everything," here's a look at the kinds of sets we build. Every event gets a custom playlist — these are just a taste of what's possible.</p>
+    </div>
+  </div>
+  <div class="container" style="padding-bottom:6rem;">
+   <p class="playlist-swipe-hint">Swipe to explore more playlist styles →</p>
+<div class="playlist-tab-wrap">
+  <div class="playlist-tabs">
+    <div class="playlist-tab active" onclick="switchPlaylist('wedding-tab', this)">Wedding Reception</div>
+    <div class="playlist-tab" onclick="switchPlaylist('corporate-tab', this)">Corporate / Background</div>
+    <div class="playlist-tab" onclick="switchPlaylist('party-tab', this)">Party Bangers</div>
+    <div class="playlist-tab" onclick="switchPlaylist('ceremony-tab', this)">Wedding Ceremony</div>
+    <div class="playlist-tab" onclick="switchPlaylist('karaoke-tab', this)">Karaoke Favorites</div>
+  </div>
+</div><!-- /playlist-tab-wrap -->
+
+    <!-- Wedding Reception -->
+    <div class="playlist-panel active" id="wedding-tab">
+      <div class="playlist-header">
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:2rem;font-style:italic;color:var(--white);margin-bottom:0.75rem;">Wedding Reception Hits</h2>
+          <p style="font-size:0.9rem;color:var(--white-dim);line-height:1.7;max-width:520px;">A crowd-tested mix that builds from elegant dinner vibes into a packed dance floor by the end of the night. Every song chosen to keep energy rising.</p>
+          <div class="playlist-vibe-tags">
+            <span class="vibe-tag">Crowd Favorites</span>
+            <span class="vibe-tag">All Ages</span>
+            <span class="vibe-tag">Dance Floor Tested</span>
+            <span class="vibe-tag">Energy Arc</span>
+          </div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-family:var(--font-display);font-size:3rem;letter-spacing:0.05em;color:var(--purple);">20</div>
+          <div style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--white-dim);">Sample Tracks</div>
+        </div>
+      </div>
+      <div class="track-list">
+        <div class="track-item"><div class="track-num">01</div><div><div class="track-name">Can't Stop the Feeling</div><div class="track-artist">Justin Timberlake</div></div><div class="track-duration">3:56</div></div>
+        <div class="track-item"><div class="track-num">02</div><div><div class="track-name">Uptown Funk</div><div class="track-artist">Mark Ronson ft. Bruno Mars</div></div><div class="track-duration">4:30</div></div>
+        <div class="track-item"><div class="track-num">03</div><div><div class="track-name">September</div><div class="track-artist">Earth, Wind & Fire</div></div><div class="track-duration">3:35</div></div>
+        <div class="track-item"><div class="track-num">04</div><div><div class="track-name">Happy</div><div class="track-artist">Pharrell Williams</div></div><div class="track-duration">3:53</div></div>
+        <div class="track-item"><div class="track-num">05</div><div><div class="track-name">Marry You</div><div class="track-artist">Bruno Mars</div></div><div class="track-duration">3:50</div></div>
+        <div class="track-item"><div class="track-num">06</div><div><div class="track-name">Dancing Queen</div><div class="track-artist">ABBA</div></div><div class="track-duration">3:51</div></div>
+        <div class="track-item"><div class="track-num">07</div><div><div class="track-name">Don't Stop Believin'</div><div class="track-artist">Journey</div></div><div class="track-duration">4:11</div></div>
+        <div class="track-item"><div class="track-num">08</div><div><div class="track-name">Sweet Caroline</div><div class="track-artist">Neil Diamond</div></div><div class="track-duration">3:19</div></div>
+        <div class="track-item"><div class="track-num">09</div><div><div class="track-name">Shake It Off</div><div class="track-artist">Taylor Swift</div></div><div class="track-duration">3:39</div></div>
+        <div class="track-item"><div class="track-num">10</div><div><div class="track-name">Yeah!</div><div class="track-artist">Usher ft. Lil Jon & Ludacris</div></div><div class="track-duration">4:12</div></div>
+        <div class="track-item"><div class="track-num">11</div><div><div class="track-name">Livin' on a Prayer</div><div class="track-artist">Bon Jovi</div></div><div class="track-duration">4:09</div></div>
+        <div class="track-item"><div class="track-num">12</div><div><div class="track-name">I Wanna Dance With Somebody</div><div class="track-artist">Whitney Houston</div></div><div class="track-duration">4:52</div></div>
+        <div class="track-item"><div class="track-num">13</div><div><div class="track-name">Mr. Brightside</div><div class="track-artist">The Killers</div></div><div class="track-duration">3:42</div></div>
+        <div class="track-item"><div class="track-num">14</div><div><div class="track-name">Levitating</div><div class="track-artist">Dua Lipa</div></div><div class="track-duration">3:23</div></div>
+        <div class="track-item"><div class="track-num">15</div><div><div class="track-name">Blinding Lights</div><div class="track-artist">The Weeknd</div></div><div class="track-duration">3:20</div></div>
+        <div class="track-item"><div class="track-num">16</div><div><div class="track-name">All Night Long</div><div class="track-artist">Lionel Richie</div></div><div class="track-duration">6:26</div></div>
+        <div class="track-item"><div class="track-num">17</div><div><div class="track-name">Shut Up and Dance</div><div class="track-artist">Walk the Moon</div></div><div class="track-duration">3:18</div></div>
+        <div class="track-item"><div class="track-num">18</div><div><div class="track-name">Timber</div><div class="track-artist">Pitbull ft. Ke$ha</div></div><div class="track-duration">3:44</div></div>
+        <div class="track-item"><div class="track-num">19</div><div><div class="track-name">Bohemian Rhapsody</div><div class="track-artist">Queen</div></div><div class="track-duration">5:55</div></div>
+        <div class="track-item"><div class="track-num">20</div><div><div class="track-name">Last Dance</div><div class="track-artist">Donna Summer</div></div><div class="track-duration">7:38</div></div>
+      </div>
+    </div>
+
+    <!-- Corporate -->
+    <div class="playlist-panel" id="corporate-tab">
+      <div class="playlist-header">
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:2rem;font-style:italic;color:var(--white);margin-bottom:0.75rem;">Corporate Clean Mix</h2>
+          <p style="font-size:0.9rem;color:var(--white-dim);line-height:1.7;max-width:520px;">Sophisticated, brand-safe background music that elevates the atmosphere without overpowering conversation. Perfect for networking, dinners, and receptions.</p>
+          <div class="playlist-vibe-tags">
+            <span class="vibe-tag">Background Friendly</span>
+            <span class="vibe-tag">Brand Safe</span>
+            <span class="vibe-tag">Sophisticated</span>
+          </div>
+        </div>
+      </div>
+      <div class="track-list">
+        <div class="track-item"><div class="track-num">01</div><div><div class="track-name">Get Lucky</div><div class="track-artist">Daft Punk ft. Pharrell Williams</div></div><div class="track-duration">6:09</div></div>
+        <div class="track-item"><div class="track-num">02</div><div><div class="track-name">Redbone</div><div class="track-artist">Childish Gambino</div></div><div class="track-duration">5:27</div></div>
+        <div class="track-item"><div class="track-num">03</div><div><div class="track-name">Isn't She Lovely</div><div class="track-artist">Stevie Wonder</div></div><div class="track-duration">6:34</div></div>
+        <div class="track-item"><div class="track-num">03</div><div><div class="track-name">Ain't No Mountain High Enough</div><div class="track-artist">Marvin Gaye & Tammi Terrell</div></div><div class="track-duration">2:31</div></div>
+        <div class="track-item"><div class="track-num">05</div><div><div class="track-name">Use Somebody</div><div class="track-artist">Kings of Leon</div></div><div class="track-duration">3:50</div></div>
+        <div class="track-item"><div class="track-num">06</div><div><div class="track-name">Come and Get Your Love</div><div class="track-artist">Redbone</div></div><div class="track-duration">4:18</div></div>
+        <div class="track-item"><div class="track-num">07</div><div><div class="track-name">Valerie</div><div class="track-artist">Amy Winehouse</div></div><div class="track-duration">3:44</div></div>
+        <div class="track-item"><div class="track-num">08</div><div><div class="track-name">Treasure</div><div class="track-artist">Bruno Mars</div></div><div class="track-duration">2:59</div></div>
+       <div class="track-item"><div class="track-num">09</div><div><div class="track-name">Don't Start Now</div><div class="track-artist">Dua Lipa</div></div><div class="track-duration">3:03</div></div>
+        <div class="track-item"><div class="track-num">10</div><div><div class="track-name">Better Together</div><div class="track-artist">Jack Johnson</div></div><div class="track-duration">3:28</div></div>
+        <div class="track-item"><div class="track-num">11</div><div><div class="track-name">Ho Hey</div><div class="track-artist">The Lumineers</div></div><div class="track-duration">2:42</div></div>
+        <div class="track-item"><div class="track-num">12</div><div><div class="track-name">Pumped Up Kicks</div><div class="track-artist">Foster the People</div></div><div class="track-duration">3:59</div></div>
+        <div class="track-item"><div class="track-num">13</div><div><div class="track-name">September</div><div class="track-artist">Earth, Wind & Fire</div></div><div class="track-duration">3:36</div></div>
+
+<div class="track-item"><div class="track-num">14</div><div><div class="track-name">Lovely Day</div><div class="track-artist">Bill Withers</div></div><div class="track-duration">4:15</div></div>
+
+<div class="track-item"><div class="track-num">15</div><div><div class="track-name">Shut Up and Dance</div><div class="track-artist">WALK THE MOON</div></div><div class="track-duration">3:19</div></div>
+
+<div class="track-item"><div class="track-num">16</div><div><div class="track-name">Cake By The Ocean</div><div class="track-artist">DNCE</div></div><div class="track-duration">3:38</div></div>
+
+<div class="track-item"><div class="track-num">17</div><div><div class="track-name">Happy</div><div class="track-artist">Pharrell Williams</div></div><div class="track-duration">3:53</div></div>
+
+<div class="track-item"><div class="track-num">18</div><div><div class="track-name">Uptown Funk</div><div class="track-artist">Mark Ronson ft. Bruno Mars</div></div><div class="track-duration">4:30</div></div>
+
+<div class="track-item"><div class="track-num">19</div><div><div class="track-name">Can't Stop the Feeling!</div><div class="track-artist">Justin Timberlake</div></div><div class="track-duration">3:56</div></div>
+
+<div class="track-item"><div class="track-num">20</div><div><div class="track-name">Send Me On My Way</div><div class="track-artist">Rusted Root</div></div><div class="track-duration">4:26</div></div>
+    </div>
+    </div>
+
+    <!-- Party Bangers -->
+    <div class="playlist-panel" id="party-tab">
+      <div class="playlist-header">
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:2rem;font-style:italic;color:var(--white);margin-bottom:0.75rem;">Party Bangers</h2>
+          <p style="font-size:0.9rem;color:var(--white-dim);line-height:1.7;max-width:520px;">High-energy crowd anthems for birthdays, club nights, and after-hours events. These tracks fill floors and keep them full until last call.</p>
+          <div class="playlist-vibe-tags">
+            <span class="vibe-tag" style="background:rgba(0,217,200,0.1);color:var(--teal);border-color:rgba(0,217,200,0.3);">High Energy</span>
+            <span class="vibe-tag" style="background:rgba(0,217,200,0.1);color:var(--teal);border-color:rgba(0,217,200,0.3);">Floor Fillers</span>
+            <span class="vibe-tag" style="background:rgba(0,217,200,0.1);color:var(--teal);border-color:rgba(0,217,200,0.3);">Crowd Tested</span>
+          </div>
+        </div>
+      </div>
+      <div class="track-list">
+        <div class="track-item"><div class="track-num">01</div><div><div class="track-name">Creepin' (Remix)</div><div class="track-artist">Metro Boomin, The Weeknd & 21 Savage</div></div><div class="track-duration">3:14</div></div>
+        <div class="track-item"><div class="track-num">02</div><div><div class="track-name">Rich Flex</div><div class="track-artist">Drake & 21 Savage</div></div><div class="track-duration">3:44</div></div>
+        <div class="track-item"><div class="track-num">03</div><div><div class="track-name">As It Was</div><div class="track-artist">Harry Styles</div></div><div class="track-duration">2:37</div></div>
+        <div class="track-item"><div class="track-num">04</div><div><div class="track-name">Flowers</div><div class="track-artist">Miley Cyrus</div></div><div class="track-duration">3:21</div></div>
+        <div class="track-item"><div class="track-num">05</div><div><div class="track-name">Anti-Hero</div><div class="track-artist">Taylor Swift</div></div><div class="track-duration">3:21</div></div>
+        <div class="track-item"><div class="track-num">06</div><div><div class="track-name">Bad Habit</div><div class="track-artist">Steve Lacy</div></div><div class="track-duration">3:52</div></div>
+        <div class="track-item"><div class="track-num">07</div><div><div class="track-name">CUFF IT</div><div class="track-artist">Beyoncé</div></div><div class="track-duration">3:46</div></div>
+        <div class="track-item"><div class="track-num">08</div><div><div class="track-name">Golden Hour</div><div class="track-artist">JVKE</div></div><div class="track-duration">3:29</div></div>
+        <div class="track-item"><div class="track-num">09</div><div><div class="track-name">Late Night Talking</div><div class="track-artist">Harry Styles</div></div><div class="track-duration">2:57</div></div>
+        <div class="track-item"><div class="track-num">10</div><div><div class="track-name">I'm Good (Blue)</div><div class="track-artist">David Guetta & Bebe Rexha</div></div><div class="track-duration">2:53</div></div>
+        <div class="track-item"><div class="track-num">11</div><div><div class="track-name">Unholy</div><div class="track-artist">Sam Smith & Kim Petras</div></div><div class="track-duration">2:37</div></div>
+        <div class="track-item"><div class="track-num">12</div><div><div class="track-name">Escapism.</div><div class="track-artist">RAYE ft. 070 Shake</div></div><div class="track-duration">3:07</div></div>
+        <div class="track-item"><div class="track-num">13</div><div><div class="track-name">Industry Baby</div><div class="track-artist">Lil Nas X & Jack Harlow</div></div><div class="track-duration">3:32</div></div>
+
+<div class="track-item"><div class="track-num">14</div><div><div class="track-name">Levitating</div><div class="track-artist">Dua Lipa</div></div><div class="track-duration">3:23</div></div>
+
+<div class="track-item"><div class="track-num">15</div><div><div class="track-name">About Damn Time</div><div class="track-artist">Lizzo</div></div><div class="track-duration">3:11</div></div>
+
+<div class="track-item"><div class="track-num">16</div><div><div class="track-name">Pepas</div><div class="track-artist">Farruko</div></div><div class="track-duration">4:47</div></div>
+
+<div class="track-item"><div class="track-num">17</div><div><div class="track-name">Dance The Night</div><div class="track-artist">Dua Lipa</div></div><div class="track-duration">2:56</div></div>
+
+<div class="track-item"><div class="track-num">18</div><div><div class="track-name">Yeah!</div><div class="track-artist">Usher ft. Lil Jon & Ludacris</div></div><div class="track-duration">4:10</div></div>
+
+<div class="track-item"><div class="track-num">19</div><div><div class="track-name">Party Rock Anthem</div><div class="track-artist">LMFAO</div></div><div class="track-duration">4:23</div></div>
+
+<div class="track-item"><div class="track-num">20</div><div><div class="track-name">Turn Down for What</div><div class="track-artist">DJ Snake & Lil Jon</div></div><div class="track-duration">3:34</div></div>
+    </div>
+    </div>
+
+    <!-- Wedding Ceremony -->
+    <div class="playlist-panel" id="ceremony-tab">
+      <div class="playlist-header">
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:2rem;font-style:italic;color:var(--white);margin-bottom:0.75rem;">Wedding Ceremony Classics</h2>
+          <p style="font-size:0.9rem;color:var(--white-dim);line-height:1.7;max-width:520px;">Timeless processional and recessional music. Elegant and emotional — exactly right for the walk down the aisle.</p>
+          <div class="playlist-vibe-tags">
+            <span class="vibe-tag" style="background:rgba(201,168,76,0.1);color:var(--gold);border-color:rgba(201,168,76,0.3);">Elegant</span>
+            <span class="vibe-tag" style="background:rgba(201,168,76,0.1);color:var(--gold);border-color:rgba(201,168,76,0.3);">Timeless</span>
+            <span class="vibe-tag" style="background:rgba(201,168,76,0.1);color:var(--gold);border-color:rgba(201,168,76,0.3);">Processional Ready</span>
+          </div>
+        </div>
+      </div>
+      <div class="track-list">
+        <div class="track-item"><div class="track-num">01</div><div><div class="track-name">Canon in D</div><div class="track-artist">Pachelbel (Traditional)</div></div><div class="track-duration">—</div></div>
+        <div class="track-item"><div class="track-num">02</div><div><div class="track-name">A Thousand Years</div><div class="track-artist">Christina Perri</div></div><div class="track-duration">4:45</div></div>
+        <div class="track-item"><div class="track-num">03</div><div><div class="track-name">Marry Me</div><div class="track-artist">Train</div></div><div class="track-duration">3:48</div></div>
+        <div class="track-item"><div class="track-num">04</div><div><div class="track-name">You Are The Best Thing</div><div class="track-artist">Ray LaMontagne</div></div><div class="track-duration">3:51</div></div>
+        <div class="track-item"><div class="track-num">05</div><div><div class="track-name">All of Me</div><div class="track-artist">John Legend</div></div><div class="track-duration">4:29</div></div>
+        <div class="track-item"><div class="track-num">06</div><div><div class="track-name">Can't Help Falling in Love</div><div class="track-artist">Elvis Presley</div></div><div class="track-duration">3:00</div></div>
+        <div class="track-item"><div class="track-num">07</div><div><div class="track-name">Perfect</div><div class="track-artist">Ed Sheeran</div></div><div class="track-duration">4:23</div></div>
+        <div class="track-item"><div class="track-num">08</div><div><div class="track-name">Bless the Broken Road</div><div class="track-artist">Rascal Flatts</div></div><div class="track-duration">3:49</div></div>
+      </div>
+    </div>
+
+    <!-- Karaoke -->
+    <div class="playlist-panel" id="karaoke-tab">
+      <div class="playlist-header">
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:2rem;font-style:italic;color:var(--white);margin-bottom:0.75rem;">Karaoke Crowd Favorites</h2>
+          <p style="font-size:0.9rem;color:var(--white-dim);line-height:1.7;max-width:520px;">The songs that always bring the house down. These are the tracks that even shy guests can't resist getting up for.</p>
+          <div class="playlist-vibe-tags">
+            <span class="vibe-tag" style="background:rgba(0,217,200,0.1);color:var(--teal);border-color:rgba(0,217,200,0.3);">Singalong Ready</span>
+            <span class="vibe-tag" style="background:rgba(0,217,200,0.1);color:var(--teal);border-color:rgba(0,217,200,0.3);">Crowd Favorites</span>
+            <span class="vibe-tag" style="background:rgba(0,217,200,0.1);color:var(--teal);border-color:rgba(0,217,200,0.3);">All Ages</span>
+          </div>
+        </div>
+      </div>
+      <div class="track-list">
+        <div class="track-item"><div class="track-num">01</div><div><div class="track-name">Bohemian Rhapsody</div><div class="track-artist">Queen</div></div><div class="track-duration">5:55</div></div>
+        <div class="track-item"><div class="track-num">02</div><div><div class="track-name">Don't Stop Believin'</div><div class="track-artist">Journey</div></div><div class="track-duration">4:11</div></div>
+        <div class="track-item"><div class="track-num">03</div><div><div class="track-name">Total Eclipse of the Heart</div><div class="track-artist">Bonnie Tyler</div></div><div class="track-duration">5:33</div></div>
+        <div class="track-item"><div class="track-num">04</div><div><div class="track-name">Sweet Caroline</div><div class="track-artist">Neil Diamond</div></div><div class="track-duration">3:19</div></div>
+        <div class="track-item"><div class="track-num">05</div><div><div class="track-name">Livin' on a Prayer</div><div class="track-artist">Bon Jovi</div></div><div class="track-duration">4:09</div></div>
+        <div class="track-item"><div class="track-num">06</div><div><div class="track-name">I Will Survive</div><div class="track-artist">Gloria Gaynor</div></div><div class="track-duration">3:15</div></div>
+        <div class="track-item"><div class="track-num">07</div><div><div class="track-name">Since U Been Gone</div><div class="track-artist">Kelly Clarkson</div></div><div class="track-duration">3:09</div></div>
+        <div class="track-item"><div class="track-num">08</div><div><div class="track-name">Mr. Brightside</div><div class="track-artist">The Killers</div></div><div class="track-duration">3:42</div></div>
+        <div class="track-item"><div class="track-num">09</div><div><div class="track-name">Wannabe</div><div class="track-artist">Spice Girls</div></div><div class="track-duration">2:53</div></div>
+        <div class="track-item"><div class="track-num">10</div><div><div class="track-name">Piano Man</div><div class="track-artist">Billy Joel</div></div><div class="track-duration">5:38</div></div>
+        <div class="track-item"><div class="track-num">11</div><div><div class="track-name">Friends in Low Places</div><div class="track-artist">Garth Brooks</div></div><div class="track-duration">4:18</div></div>
+
+<div class="track-item"><div class="track-num">12</div><div><div class="track-name">Shallow</div><div class="track-artist">Lady Gaga & Bradley Cooper</div></div><div class="track-duration">3:37</div></div>
+
+<div class="track-item"><div class="track-num">13</div><div><div class="track-name">Love Shack</div><div class="track-artist">The B-52's</div></div><div class="track-duration">5:21</div></div>
+
+<div class="track-item"><div class="track-num">14</div><div><div class="track-name">Dancing Queen</div><div class="track-artist">ABBA</div></div><div class="track-duration">3:51</div></div>
+
+<div class="track-item"><div class="track-num">15</div><div><div class="track-name">Before He Cheats</div><div class="track-artist">Carrie Underwood</div></div><div class="track-duration">3:19</div></div>
+
+<div class="track-item"><div class="track-num">16</div><div><div class="track-name">Wonderwall</div><div class="track-artist">Oasis</div></div><div class="track-duration">4:18</div></div>
+
+<div class="track-item"><div class="track-num">17</div><div><div class="track-name">Hit Me Baby One More Time</div><div class="track-artist">Britney Spears</div></div><div class="track-duration">3:31</div></div>
+
+<div class="track-item"><div class="track-num">18</div><div><div class="track-name">Take Me Home, Country Roads</div><div class="track-artist">John Denver</div></div><div class="track-duration">3:10</div></div>
+
+<div class="track-item"><div class="track-num">19</div><div><div class="track-name">Valerie</div><div class="track-artist">Amy Winehouse</div></div><div class="track-duration">3:54</div></div>
+
+<div class="track-item"><div class="track-num">20</div><div><div class="track-name">Shake It Off</div><div class="track-artist">Taylor Swift</div></div><div class="track-duration">3:39</div></div>
+      </div>
+    </div>
+
+    <div style="margin-top:4rem; padding:3rem; background:var(--bg2); border:1px solid var(--border); border-radius:8px; text-align:center;">
+      <h3 style="font-family:var(--font-serif);font-size:1.5rem;font-style:italic;color:var(--white);margin-bottom:0.75rem;">Your Playlist is Completely Custom</h3>
+      <p style="font-size:0.9rem;color:var(--white-dim);max-width:520px;margin:0 auto 1.5rem;line-height:1.75;">These are just examples. Every event gets a playlist built specifically for you — your must-plays, your crowd, your vibe. Tell us your favorites and we'll weave them in perfectly.</p>
+      <button class="btn btn-primary" onclick="navigate('contact')">Start Planning Your Playlist</button>
+    </div>
+  </div>
+</div><!-- /page-playlists -->
+
+
+<!-- ============================================================
+     REVIEWS PAGE
+============================================================ -->
+<div id="page-reviews" class="page">
+  <div class="reviews-hero">
+    <div class="container text-center">
+      <div class="section-label">Client Testimonials</div>
+      <h1 class="section-title" style="font-size:clamp(3rem,7vw,5.5rem);">Reviews</h1>
+      <div class="section-divider"></div>
+      <p class="section-subtitle">We let our clients do the talking. Real reviews from real events — no embellishment needed.</p>
+    </div>
+  </div>
+
+  <div class="container" style="padding-bottom:6rem;">
+    <div class="reviews-summary">
+      <div class="reviews-score-big">
+        <div class="score-num">5.0</div>
+        <div class="score-stars">★★★★★</div>
+        <div class="score-count">Based on 200+ reviews</div>
+      </div>
+      <div>
+        <div class="rating-bars">
+          <div class="rating-bar-row">
+            <div>5 ★</div>
+            <div class="rating-bar-track"><div class="rating-bar-fill" style="width:97%;"></div></div>
+            <div>97%</div>
+          </div>
+          <div class="rating-bar-row">
+            <div>4 ★</div>
+            <div class="rating-bar-track"><div class="rating-bar-fill" style="width:3%;"></div></div>
+            <div>3%</div>
+          </div>
+          <div class="rating-bar-row">
+            <div>3 ★</div>
+            <div class="rating-bar-track"><div class="rating-bar-fill" style="width:0%;"></div></div>
+            <div>0%</div>
+          </div>
+          <div class="rating-bar-row">
+            <div>2 ★</div>
+            <div class="rating-bar-track"><div class="rating-bar-fill" style="width:0%;"></div></div>
+            <div>0%</div>
+          </div>
+          <div class="rating-bar-row">
+            <div>1 ★</div>
+            <div class="rating-bar-track"><div class="rating-bar-fill" style="width:0%;"></div></div>
+            <div>0%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats centered below -->
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:3rem;text-align:center;margin-top:2rem;padding-top:2rem;border-top:1px solid var(--border);margin-bottom:3rem;">
+      <div>
+        <div style="font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:0.3rem;">Reliability</div>
+        <div style="font-family:var(--font-display);font-size:1.8rem;color:var(--white);">100%</div>
+      </div>
+      <div>
+        <div style="font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:0.3rem;">Professionalism</div>
+        <div style="font-family:var(--font-display);font-size:1.8rem;color:var(--white);">5.0</div>
+      </div>
+      <div>
+        <div style="font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:0.3rem;">Would Rehire</div>
+        <div style="font-family:var(--font-display);font-size:1.8rem;color:var(--white);">98%</div>
+      </div>
+    </div>
+
+    <div class="reviews-masonry">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I was skeptical about hiring a DJ for our corporate gala, but Emerald City Sound completely blew us away. The energy was perfect, the transitions were flawless, and they kept it professional throughout. Our team is still talking about it."</p>
+        <div class="review-author">Jennifer K.</div>
+        <div class="review-event">Corporate Gala — Microsoft, Redmond</div>
+        <div class="review-platform">Google Reviews</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Our wedding reception was everything we dreamed of. Every song was perfect — they really listened to what we wanted and delivered something that felt completely personal. The dance floor was full from 8pm until they literally had to turn the lights on."</p>
+        <div class="review-author">Sarah & Michael T.</div>
+        <div class="review-event">Wedding — Edgewater Hotel, Seattle</div>
+        <div class="review-platform">The Knot</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Best birthday party I've ever had, and I'm 40 now so that's saying something. They read the room perfectly — started mellow when everyone was catching up, then turned it into an absolute party. Took requests without missing a beat. Legendary night."</p>
+        <div class="review-author">Marcus D.</div>
+        <div class="review-event">40th Birthday Celebration — Bellevue</div>
+        <div class="review-platform">Yelp</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"We hired ECS for our holiday party on the Argosy cruise and the vibe was absolutely perfect. The music matched the setting beautifully — elegant but fun. Several guests asked for their contact info before the night was over."</p>
+        <div class="review-author">Amanda R., Event Coordinator</div>
+        <div class="review-event">Holiday Party — Argosy Cruises, Seattle</div>
+        <div class="review-platform">WeddingWire</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"They arrived early, were completely set up before guests arrived, and didn't need any hand-holding the entire night. The music was exactly what we asked for. I've hired other DJs before — this was a completely different and amazing experience."</p>
+        <div class="review-author">Tom & Lisa H.</div>
+        <div class="review-event">Wedding — Snoqualmie Falls Lodge</div>
+        <div class="review-platform">The Knot</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Our product launch event needed something special — background music that kept energy up without being distracting. They nailed it perfectly. Professional, clean, and exactly the right vibe for the brand we were trying to project."</p>
+        <div class="review-author">Kevin M., Marketing Director</div>
+        <div class="review-event">Product Launch — Seattle Convention Center</div>
+        <div class="review-platform">Google Reviews</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Three words: BOOK. THEM. NOW. Our daughter's sweet 16 was absolutely magical. They knew how to work a room of teenagers AND the parents simultaneously — which is not easy. Everyone had a great time."</p>
+        <div class="review-author">Patricia L.</div>
+        <div class="review-event">Sweet 16 Birthday Party — Kirkland</div>
+        <div class="review-platform">Yelp</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"We've used Emerald City Sound for three company events now and we won't use anyone else. Consistent, professional, and the quality is always outstanding. They've become part of our event planning team at this point."</p>
+        <div class="review-author">Rachel S., Operations Manager</div>
+        <div class="review-event">Annual Company Celebration</div>
+        <div class="review-platform">Google Reviews</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I didn't think I'd care that much about the DJ, honestly. My wife convinced me to invest in a good one for our wedding. Best decision we made. The entire reception was perfect and we owe a lot of that to how they ran the room."</p>
+        <div class="review-author">David & Cara M.</div>
+        <div class="review-event">Wedding — Willows Lodge, Woodinville</div>
+        <div class="review-platform">WeddingWire</div>
+      </div>
+    </div>
+
+    <div style="margin-top:4rem;text-align:center;">
+      <p style="font-size:0.88rem;color:var(--white-dim);margin-bottom:2rem;line-height:1.7;">See all our reviews on Google, The Knot, WeddingWire, and Yelp.</p>
+      <button class="btn btn-primary" onclick="navigate('contact')">Join Our Happy Clients</button>
+    </div>
+  </div>
+</div><!-- /page-reviews -->
+
+
+<!-- ============================================================
+     ABOUT PAGE
+============================================================ -->
+<div id="page-about" class="page">
+  <div class="about-hero">
+    <div class="container text-center">
+      <div class="section-label">Our Story</div>
+      <h1 class="section-title" style="font-size:clamp(3rem,7vw,5.5rem);">About Us</h1>
+      <div class="section-divider"></div>
+    </div>
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <div class="about-layout">
+        <div class="about-img-stack">
+          <div class="about-img-main">
+            <img src="images/dj7.jpg" alt="DJ performing" loading="lazy">
+          </div>
+        </div>
+        <div>
+          <div class="about-quote">"We don't press play. We create moments people carry with them for the rest of their lives."</div>
+          <p class="about-body">Emerald City Sound & Events was born out of a simple belief: the music at your event isn't background — it's the heartbeat of everything that happens. It drives the energy in the room, pulls people onto the dance floor, and creates the moments you'll remember forever.</p>
+          <p class="about-body">With over 15 years of experience and more than 400 events produced across the Pacific Northwest, we've refined our approach into something that goes far beyond just DJing. We're event partners — collaborating with you from the planning stages through to the final song of the night.</p>
+          <p class="about-body">Our roots are deep in Seattle's music and entertainment scene. We've worked everything from intimate backyard weddings in Kirkland to major corporate galas in downtown Seattle, from Microsoft team events to late-night club sets — and we bring the same level of preparation and passion to every single one.</p>
+          <p class="about-body">What drives us is simple: seeing a dance floor packed, watching people's faces light up during a first dance, or hearing the roar of a crowd when we drop exactly the right song at exactly the right moment. That's why we do this.</p>
+        </div>
+      </div>
+
+      <!-- Stats — full width centered below photo and text -->
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:3rem;text-align:center;margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--border);">
+        <div>
+          <div class="cred-num">400+</div>
+          <div class="cred-label">Events Produced</div>
+        </div>
+        <div>
+          <div class="cred-num">15+</div>
+          <div class="cred-label">Years Experience</div>
+        </div>
+        <div>
+          <div class="cred-num">5.0</div>
+          <div class="cred-label">Average Rating</div>
+        </div>
+        <div>
+          <div class="cred-num">100%</div>
+          <div class="cred-label">Satisfaction Rate</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="section" style="background:var(--bg2);">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:3rem;">
+        <div class="section-label">Why We're Different</div>
+        <h2 class="section-title">Why Clients Choose<br><em>Emerald City Sound</em></h2>
+        <div class="section-divider"></div>
+        <p class="section-subtitle">Most DJ sites are boring and all look the same. Here's what actually separates us.</p>
+      </div>
+      <div class="why-us-grid">
+        <div class="why-item">
+          <div class="why-item-title">We Read the Room</div>
+          <p class="why-item-text">Our most important skill isn't technical — it's human. We watch the crowd, feel the energy shifts, and make real-time decisions that keep the vibe exactly where it needs to be throughout your event.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-item-title">Custom, Not Cookie-Cutter</div>
+          <p class="why-item-text">Every playlist, every transition, every timing cue is built specifically for your event. We start from scratch every time. No templates, no recycled sets — your event gets music designed entirely for it.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-item-title">Obsessively Reliable</div>
+          <p class="why-item-text">We arrive early. Every. Single. Time. Backup equipment comes with us to every event. We have contingency plans for contingency plans. You will never be left wondering if we're going to show up — because we always do.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-item-title">Communication is Everything</div>
+          <p class="why-item-text">From your first inquiry to the day-of execution, we keep communication clear, fast, and thorough. You always know what's happening, what's planned, and what to expect.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-item-title">Professional Appearance</div>
+          <p class="why-item-text">We look the part. Whether your event is black-tie formal or casual backyard party, we dress appropriately, conduct ourselves professionally, and represent you well to every guest in attendance.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-item-title">Investment-Grade Equipment</div>
+          <p class="why-item-text">We use professional-grade sound systems, lighting rigs, and backup gear that performs flawlessly regardless of venue size or acoustic challenges. The quality of the sound matters — and we take it seriously.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Page Bottom CTA -->
+  <section style="padding:5rem 0;background:var(--bg2);border-top:1px solid var(--border);">
+    <div class="container text-center">
+      <div class="section-label">Ready to Work Together?</div>
+      <h2 class="section-title">Let's Create Something<br><em>Unforgettable.</em></h2>
+      <p class="section-subtitle" style="margin:1.5rem auto 2.5rem;">Every great event starts with a conversation. Reach out and let's talk about yours.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <button class="btn btn-primary" onclick="navigate('contact')" style="padding:1rem 2.5rem;">Plan Your Event</button>
+        <button class="btn btn-outline" onclick="navigate('faq')">Read Our FAQ</button>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-about -->
+
+
+<!-- ============================================================
+     CONTACT PAGE
+============================================================ -->
+<div id="page-contact" class="page">
+  <div class="contact-hero">
+    <div class="container text-center">
+      <div class="section-label">Get in Touch</div>
+      <h1 class="section-title" style="font-size:clamp(2.5rem,6vw,5rem);">Let's Plan Your<br><em>Perfect Event.</em></h1>
+      <div class="section-divider"></div>
+    </div>
+  </div>
+
+  <section style="padding-bottom:6rem;">
+    <div class="container">
+      <div class="contact-layout">
+        <div class="contact-info">
+          <p class="contact-info-text">For every celebration, we take a personal and customized approach. We start with a conversation — working with you to understand your vision and build a custom plan that brings it to life. Fill out the form and we'll be in touch within 24 hours.</p>
+
+          <div class="contact-detail">
+            <div class="contact-detail-item">
+              <div class="contact-detail-label">Location</div>
+              <div class="contact-detail-value">Seattle, Washington</div>
+              <div style="font-size:0.82rem;color:var(--white-dim);margin-top:0.2rem;">Serving all of the Pacific Northwest</div>
+            </div>
+            <div class="contact-detail-item">
+              <div class="contact-detail-label">Email</div>
+              <div class="contact-detail-value">info@emeraldcitysound.com</div>
+            </div>
+            <div class="contact-detail-item">
+              <div class="contact-detail-label">Phone</div>
+              <div class="contact-detail-value">(206) 270-8480</div>
+              <div style="font-size:0.82rem;color:var(--white-dim);margin-top:0.2rem;">Available Mon–Sat, 9am–7pm PST</div>
+            </div>
+            <div class="contact-detail-item">
+              <div class="contact-detail-label">Response Time</div>
+              <div class="contact-detail-value">Within 24 hours — guaranteed</div>
+            </div>
+          </div>
+
+          <div class="contact-guarantee">
+            <div class="contact-guarantee-title">Our Booking Guarantee</div>
+            <ul class="contact-guarantee-list">
+              <li>Fully insured with liability coverage</li>
+              <li>Backup equipment at every event</li>
+              <li>Written contract for all bookings</li>
+              <li>Replacement DJ guarantee for emergencies</li>
+              <li>We arrive 2–3 hrs before your event</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="contact-form" id="contact-form-container">
+          <div id="contact-form-fields">
+            <div class="form-title">Tell Us About Your Event</div>
+            <p class="form-subtitle">The more you share, the better we can tailor our response to your specific needs.</p>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">First Name *</label>
+                <input type="text" class="form-control" id="fname" placeholder="First name">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Last Name *</label>
+                <input type="text" class="form-control" id="lname" placeholder="Last name">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Email Address *</label>
+                <input type="email" class="form-control" id="email" placeholder="your@email.com">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Phone Number</label>
+                <input type="tel" class="form-control" id="phone" placeholder="(206) 555-0000">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Type of Event *</label>
+              <select class="form-control" id="event-type">
+                <option value="" disabled selected>Select event type</option>
+                <option>Wedding — Full Day</option>
+                <option>Wedding — Reception Only</option>
+                <option>Corporate Event / Gala</option>
+                <option>Birthday Party</option>
+                <option>Anniversary Celebration</option>
+                <option>Graduation Party</option>
+                <option>Holiday Party</option>
+                <option>Club / After-Hours Show</option>
+                <option>Karaoke Event</option>
+                <option>Private Party</option>
+                <option>Other — I'll explain below</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Event Date *</label>
+                <input type="date" class="form-control" id="event-date">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Event Start Time</label>
+                <input type="time" class="form-control" id="event-time">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Event Location / Venue</label>
+              <input type="text" class="form-control" id="venue" placeholder="Venue name and city">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Estimated Guest Count</label>
+              <select class="form-control" id="guest-count">
+                <option value="" disabled selected>Select approximate guest count</option>
+                <option>Under 50 guests</option>
+                <option>50–100 guests</option>
+                <option>100–200 guests</option>
+                <option>200–500 guests</option>
+                <option>500+ guests</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Tell Us About Your Vision</label>
+              <textarea class="form-control" id="message" placeholder="Music styles, must-play songs, vibe you're going for, any special moments, questions — anything that helps us understand your event..."></textarea>
+            </div>
+
+            <button class="btn btn-primary" onclick="submitForm()" style="width:100%;justify-content:center;padding:1rem;font-size:0.85rem;">Send My Request</button>
+            <p class="form-note">We'll respond within 24 hours to discuss your event in detail. No pressure, no obligation.</p>
+          </div>
+
+          <div class="form-success" id="form-success">
+            <div style="font-size:2.5rem;margin-bottom:1rem;">✓</div>
+            <div class="form-success-title">Message Received!</div>
+            <p class="form-success-text" style="margin:0.75rem 0 0;">Thank you for reaching out. We'll review your event details and respond within 24 hours to start planning something extraordinary together.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div><!-- /page-contact -->
+
+<!-- ============================================================
+     FAQ PAGE
+============================================================ -->
+<div id="page-faq" class="page">
+
+  <div class="faq-page-hero">
+    <div class="container text-center">
+      <div class="section-label">Got Questions?</div>
+      <h1 class="section-title" style="font-size:clamp(3rem,7vw,5.5rem);">
+        Frequently Asked<br><em>Questions</em>
+      </h1>
+      <div class="section-divider"></div>
+      <p class="section-subtitle">Everything you need to know before booking. Don't see your question here? Reach out — we're happy to help.</p>
+    </div>
+  </div>
+
+  <section style="padding-bottom: 6rem;">
+    <div class="container">
+
+      <!-- BOOKING -->
+      <div style="margin-bottom: 0.75rem;">
+        <div class="section-label" style="margin-bottom: 1rem;">Booking & Availability</div>
+      </div>
+      <div class="faq-grid" style="margin-top: 0; margin-bottom: 3rem;">
+
+        <div class="faq-card" id="faq-1">
+          <button class="faq-card-question" onclick="toggleFaqCard('faq-1')">
+            <span>How far in advance should we book?</span>
+            <span class="faq-card-toggle">+</span>
+          </button>
+          <div class="faq-card-answer">
+            <div class="faq-card-answer-inner">
+              We recommend booking as early as possible — especially for weddings and weekend events. Popular dates fill up months in advance. Reach out anytime to check availability!
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-card" id="faq-2">
+          <button class="faq-card-question" onclick="toggleFaqCard('faq-2')">
+            <span>How do payments and deposits work?</span>
+            <span class="faq-card-toggle">+</span>
+          </button>
+          <div class="faq-card-answer">
+            <div class="faq-card-answer-inner">
+              A deposit is required to reserve your date, with the remaining balance due before the event. We'll provide all payment details and a written contract during the booking process.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-card" id="faq-3">
+          <button class="faq-card-question" onclick="toggleFaqCard('faq-3')">
+            <span>What areas do you serve?</span>
+            <span class="faq-card-toggle">+</span>
+          </button>
+          <div class="faq-card-answer">
+            <div class="faq-card-answer-inner">
+              We proudly serve Seattle and the surrounding areas throughout Washington State — including Bellevue, Redmond, Kirkland, Bothell, Tacoma, Everett, and beyond.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-card" id="faq-4">
+          <button class="faq-card-question" onclick="toggleFaqCard('faq-4')">
+            <span>Do you travel for events outside the local area?</span>
+            <span class="faq-card-toggle">+</span>
+          </button>
+          <div class="faq-card-answer">
+            <div class="faq-card-answer-inner">
+              Yes! Travel is available for events outside the local area. Additional travel fees may apply depending on distance and venue location. Contact us for a custom quote.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- MUSIC -->
+      <div style="margin-bottom: 0.75rem;">
+        <div class="section-label" style="margin-bottom: 1rem;">Music & Playlists</div>
+      </div>
+      <div class="faq-grid" style="margin-top: 0; margin-bottom: 3rem;">
+
+        <div class="faq-card" id="faq-5">
+          <button class="faq-card-question" onclick="toggleFaqCard('faq-5')">
+            <span>Can we choose our own music?</span>
+            <span class="faq-card-toggle">+</span>
+          </button>
+          <div class="faq-card-answer">
+            <div class="faq-card-answer-inner">
+              Absolutely! Every event is fully customized to your style and preferences. You can provide must-play songs, favorite genres, and even a do-not-play list. Your event, your soundtrack.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-card" id="faq-6">
+          <button class="faq-card-question" onclick="toggleFaqCard('faq-6')">
+            <span>Do you take song requests from guests during the event?</span>
+            <span class="faq-card-toggle">+</span>
+          </button>
+          <div class="faq-card-answer">
+            <div class="faq-card-answer-inner">
+              Yes! We're happy to take guest requests while still keeping the overall vibe and flow of your event in mind. We'll weave them in seamlessly so they enhance rather than interrupt the energy.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-card" id="faq-7">
+          <button class="faq-card-question" onclick="toggleFaqCard('faq-7')">
+            <span>What types of music do you play?</span>
+            <span class="faq-card-toggle">+</span>
+          </button>
+          <div class="faq-card-answer">
+            <div class="faq-card-answer-inner">
+              We're experienced across a wide range of genres including Top 40, Hip Hop, EDM, Throwbacks, Pop, Rock, Country, Latin, R&B, and more. If your guests love it, we probably have it.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- EQUIPMENT & SERVICES -->
+      <div style="margin-bottom: 0.75rem;">
+        <div class="section-label" style="margin-bottom: 1rem;">Equipment & Services</div>
+      </div>
+      <div class="faq-grid" style="margin-top: 0; margin-bottom: 3rem;">
+
+        <div class="faq-card" id="faq-8">
+          <button class="faq-card-question" onclick="toggleFaqCard('faq-8')">
+            <span>Do you provide your own sound equipment?</span>
+            <span class="faq-card-toggle">+</span>
+          </button>
+          <div class="faq-card-answer">
+            <div class="faq-card-answer-inner">
+              Yes — all professional sound equipment, microphones, speakers, and DJ gear are included with every event package. You don't need to arrange anything on the technical side.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-card" id="faq-9">
+          <button class="faq-card-question" onclick="toggleFaqCard('faq-9')">
+            <span>Do you offer lighting or special effects?</span>
+            <span class="faq-card-toggle">+</span>
+          </button>
+          <div class="faq-card-answer">
+            <div class="faq-card-answer-inner">
+              Yes! We offer a variety of enhancements including dance floor lighting, uplighting, wireless microphones, fog effects, and more — depending on your event needs and package.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-card" id="faq-10">
+          <button class="faq-card-question" onclick="toggleFaqCard('faq-10')">
+            <span>Do you offer MC and hosting services?</span>
+            <span class="faq-card-toggle">+</span>
+          </button>
+          <div class="faq-card-answer">
+            <div class="faq-card-answer-inner">
+              Yes! We can help guide the flow of your event with announcements, introductions, timeline coordination, and crowd engagement — keeping everything running smoothly all night long.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-card" id="faq-11">
+          <button class="faq-card-question" onclick="toggleFaqCard('faq-11')">
+            <span>Do you DJ corporate events and business functions?</span>
+            <span class="faq-card-toggle">+</span>
+          </button>
+          <div class="faq-card-answer">
+            <div class="faq-card-answer-inner">
+              Absolutely. We provide professional entertainment for corporate parties, holiday events, company celebrations, award ceremonies, networking events, and more. Brand-safe, polished, and reliable.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- DAY OF EVENT -->
+      <div style="margin-bottom: 0.75rem;">
+        <div class="section-label" style="margin-bottom: 1rem;">Day of Your Event</div>
+      </div>
+      <div class="faq-grid" style="margin-top: 0; margin-bottom: 3rem;">
+
+        <div class="faq-card" id="faq-12">
+          <button class="faq-card-question" onclick="toggleFaqCard('faq-12')">
+            <span>How early do you arrive before the event starts?</span>
+            <span class="faq-card-toggle">+</span>
+          </button>
+          <div class="faq-card-answer">
+            <div class="faq-card-answer-inner">
+              We typically arrive 1–2 hours early to ensure everything is fully set up, tested, and sounding great before the first guest walks in. You will never have an incomplete setup when guests arrive.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-card" id="faq-13">
+          <button class="faq-card-question" onclick="toggleFaqCard('faq-13')">
+            <span>What happens if there's an emergency or equipment issue?</span>
+            <span class="faq-card-toggle">+</span>
+          </button>
+          <div class="faq-card-answer">
+            <div class="faq-card-answer-inner">
+              We come prepared with backup equipment and contingency plans to ensure your event runs smoothly from start to finish. In 15+ years, we've never missed an event — and we intend to keep it that way.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CTA -->
+      <div class="faq-cta-band">
+        <div class="faq-cta-title">Still Have Questions?</div>
+        <p class="faq-cta-text">We're happy to talk through any details about your event. Reach out and we'll get back to you within 24 hours.</p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <button class="btn btn-primary" onclick="navigate('contact')">Get in Touch</button>
+          <button class="btn btn-outline" onclick="navigate('services')">View Our Services</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div><!-- /page-faq -->
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo-text">Emerald City Sound</div>
+        <div class="footer-logo-sub">& Events — Seattle, WA</div>
+        <p class="footer-tagline">The Pacific Northwest's premier DJ and event production team. We create unforgettable moments through music, sound, and light.</p>
+        <p style="font-size:0.78rem;color:var(--white-dim);">info@emeraldcitysound.com<br>(206) 270-8480</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><span onclick="navigate('services')">Wedding DJ</span></li>
+          <li><span onclick="navigate('services')">Corporate Events</span></li>
+          <li><span onclick="navigate('services')">Special Events</span></li>
+          <li><span onclick="navigate('services')">Event Lighting</span></li>
+          <li><span onclick="navigate('services')">Karaoke Services</span></li>
+          <li><span onclick="navigate('services')">Photo Booths</span></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Quick Links</div>
+        <ul class="footer-links">
+          <li><span onclick="navigate('home')">Home</span></li>
+          <li><span onclick="navigate('gallery')">Gallery</span></li>
+          <li><span onclick="navigate('playlists')">Playlists</span></li>
+          <li><span onclick="navigate('reviews')">Reviews</span></li>
+          <li><span onclick="navigate('about')">About Us</span></li>
+          <li><span onclick="navigate('contact')">Contact</span></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Service Area</div>
+        <ul class="footer-links">
+          <li><a>Seattle, WA</a></li>
+          <li><a>Bellevue & Eastside</a></li>
+          <li><a>Kirkland & Redmond</a></li>
+          <li><a>Tacoma & South Sound</a></li>
+          <li><a>Everett & North Sound</a></li>
+          <li><a>All of Washington State</a></li>
+        </ul>
+        <div style="margin-top:1.5rem;">
+          <button class="btn btn-primary" onclick="navigate('contact')" style="padding:0.65rem 1.5rem;font-size:0.72rem;">Plan Your Event</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 <span>Emerald City Sound & Events</span>. All rights reserved.</div>
+      <div class="footer-area">Proudly Based in Seattle, Washington</div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     JAVASCRIPT
+============================================================ -->
+<script>
+// ---- Navigation ----
+function navigate(page) {
+  // Support sub-page aliases
+  const el = document.getElementById('page-' + page);
+  if (!el) return;
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  const activeLink = document.querySelector(`[data-page="${page}"]`);
+  if (activeLink) activeLink.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ---- Mobile Menu ----
+function toggleMobileMenu() {
+  document.getElementById('mobile-menu').classList.toggle('open');
+}
+function closeMobileMenu() {
+  document.getElementById('mobile-menu').classList.remove('open');
+}
+
+// ---- Gallery Filter ----
+function filterGallery(category, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    if (category === 'all' || item.dataset.category === category) {
+      item.style.display = 'block';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
+
+// ---- Playlist Tabs ----
+function switchPlaylist(tabId, el) {
+  document.querySelectorAll('.playlist-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.playlist-panel').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById(tabId).classList.add('active');
+}
+
+// ---- FAQ Accordion ----
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const answer = item.querySelector('.faq-answer');
+  const isOpen = item.classList.contains('open');
+
+  document.querySelectorAll('.faq-item.open').forEach(openItem => {
+    openItem.classList.remove('open');
+    openItem.querySelector('.faq-answer').style.maxHeight = '0';
+  });
+
+  
+
+  if (!isOpen) {
+    item.classList.add('open');
+    answer.style.maxHeight = answer.scrollHeight + 'px';
+  }
+}
+
+// ---- FAQ Page Cards ----
+function toggleFaqCard(id) {
+  const card = document.getElementById(id);
+  const answer = card.querySelector('.faq-card-answer');
+  const isOpen = card.classList.contains('open');
+
+  // Close all other cards
+  document.querySelectorAll('.faq-card.open').forEach(openCard => {
+    openCard.classList.remove('open');
+    openCard.querySelector('.faq-card-answer').style.maxHeight = '0';
+  });
+
+  // Open this one if it wasn't already open
+  if (!isOpen) {
+    card.classList.add('open');
+    answer.style.maxHeight = answer.scrollHeight + 'px';
+  }
+}
+
+// ---- Contact Form ----
+function submitForm() {
+  const fname = document.getElementById('fname').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const eventType = document.getElementById('event-type').value;
+
+  if (!fname || !email || !eventType) {
+    alert('Please fill in your name, email, and event type to continue.');
+    return;
+  }
+
+  document.getElementById('contact-form-fields').style.display = 'none';
+  document.getElementById('form-success').classList.add('visible');
+}
+
+// ---- Header scroll effect ----
+window.addEventListener('scroll', () => {
+  const h = document.getElementById('site-header');
+  if (window.scrollY > 60) {
+    h.style.background = 'rgba(8,8,16,0.97)';
+  } else {
+    h.style.background = 'rgba(8,8,16,0.85)';
+  }
+});
+
+// ---- Lightbox ----
+let lightboxItems = [];
+let lightboxIndex = 0;
+
+function buildLightboxItems() {
+  // Grabs all currently visible gallery images
+  lightboxItems = Array.from(
+    document.querySelectorAll('.gallery-item')
+  ).filter(el => el.style.display !== 'none').map(el => ({
+    src: el.querySelector('img').src,
+    alt: el.querySelector('img').alt,
+    label: el.querySelector('.gallery-item-label')?.textContent || ''
+  }));
+}
+
+function openLightbox(el) {
+  buildLightboxItems();
+  const src = el.querySelector('img').src;
+  lightboxIndex = lightboxItems.findIndex(i => i.src === src);
+  showLightboxImage();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function showLightboxImage() {
+  const item = lightboxItems[lightboxIndex];
+  document.getElementById('lightbox-img').src = item.src;
+  document.getElementById('lightbox-img').alt = item.alt;
+  document.getElementById('lightbox-caption').textContent = item.label;
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function lightboxNav(direction) {
+  lightboxIndex = (lightboxIndex + direction + lightboxItems.length) % lightboxItems.length;
+  showLightboxImage();
+}
+
+function lightboxBgClick(e) {
+  // Close if user clicks the dark background (not the image)
+  if (e.target === document.getElementById('lightbox')) closeLightbox();
+}
+
+// Close with Escape key
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowRight') lightboxNav(1);
+  if (e.key === 'ArrowLeft') lightboxNav(-1);
+});
+</script>
+<!-- LIGHTBOX -->
+<div class="lightbox-overlay" id="lightbox" onclick="lightboxBgClick(event)">
+  <button class="lightbox-close" onclick="closeLightbox()">&#x2715;</button>
+  <button class="lightbox-prev" onclick="lightboxNav(-1)">&#8592;</button>
+  <div class="lightbox-img-wrap">
+    <img id="lightbox-img" src="" alt="">
+  </div>
+  <button class="lightbox-next" onclick="lightboxNav(1)">&#8594;</button>
+  <div class="lightbox-caption" id="lightbox-caption"></div>
+</div>
+</body>
+</html>
